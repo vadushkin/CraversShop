@@ -87,7 +87,7 @@ button {
   cursor: pointer;
 }
 
-img, ion-icon, button, a { display: block; }
+img, ion-icon, button, a { display: block;}
 
 span { display: inline-block; }
 
@@ -780,6 +780,7 @@ body::-webkit-scrollbar-thumb:hover { background: hsl(0, 0%, 70%); }
   padding: 10px;
   -webkit-border-radius: var(--border-radius-md);
           border-radius: var(--border-radius-md);
+  filter: brightness(50%);
 }
 
 
@@ -2110,7 +2111,7 @@ footer {
   gap: 10px;
 }
 
-.social-link .footer-nav-link { font-size: 25px; }
+.social-link .footer-nav-link { font-size: 25px;}
 
 .footer-bottom {
   margin-bottom: 50px;

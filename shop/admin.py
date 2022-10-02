@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from shop.models import social_networks
+from shop.models import social_network, category
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -24,4 +24,26 @@ class SocialNetworkAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
-admin.site.register(social_networks.Network, SocialNetworkAdmin)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'name', 'slug', 'photo', 'get_photo')
+    list_display_links = ('id', 'name')
+    list_filter = ('name', 'slug', )
+    search_fields = ('name', 'slug', )
+    prepopulated_fields = {'slug': ('name',), }
+    fields = ('name',
+              'slug',
+              'photo',
+              )
+    readonly_fields = ('get_photo',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
+admin.site.register(social_network.Network, SocialNetworkAdmin)
+admin.site.register(category.Category, CategoryAdmin)

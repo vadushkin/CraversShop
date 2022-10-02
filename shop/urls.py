@@ -1,7 +1,8 @@
 from django.urls import path
 
-from shop.views import home_page
+from shop.views import ShopHome, CategoryView
 
 urlpatterns = [
-    path('', home_page, name='home')
+    path('', ShopHome.as_view(), name='home'),
+    path('category/<slug:slug>', CategoryView.as_view, name='category'),
 ]
