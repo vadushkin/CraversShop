@@ -26,13 +26,14 @@ class SocialNetworkAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        'id', 'name', 'slug', 'photo', 'get_photo')
+        'id', 'name', 'slug', 'parent', 'photo', 'get_photo')
     list_display_links = ('id', 'name')
     list_filter = ('name', 'slug', )
     search_fields = ('name', 'slug', )
     prepopulated_fields = {'slug': ('name',), }
     fields = ('name',
               'slug',
+              'parent',
               'photo',
               )
     readonly_fields = ('get_photo',)
