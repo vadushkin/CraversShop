@@ -5,78 +5,78 @@
     {{ title }}
 {% endblock title %}
 
-{% block modal %}
-    <div class="modal" data-modal>
-
-    <div class="modal-close-overlay" data-modal-overlay></div>
-
-    <div class="modal-content">
-
-        <button class="modal-close-btn" data-modal-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
-        <div class="newsletter-img">
-            <img src="{% static 'images/newsletter.png'%}" alt="subscribe newsletter" width="400" height="400">
-        </div>
-
-        <div class="newsletter">
-
-            <form action="#">
-
-                <div class="newsletter-header">
-
-                    <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-
-                    <p class="newsletter-desc">
-                        Subscribe the <b>Anon</b> to get latest products and discount update.
-                    </p>
-
-                </div>
-
-                <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-
-                <button type="submit" class="btn-newsletter">Subscribe</button>
-
-            </form>
-
-        </div>
-
-    </div>
-
-</div>
-{% endblock modal %}
-
-{% block notification_toast %}
-    <div class="notification-toast" data-toast>
-
-    <button class="toast-close-btn" data-toast-close>
-        <ion-icon name="close-outline"></ion-icon>
-    </button>
-
-    <div class="toast-banner">
-        <img src="{% static 'images/products/jewellery-1.jpg'%}" alt="Rose Gold Earrings" width="80" height="70">
-    </div>
-
-    <div class="toast-detail">
-
-        <p class="toast-message">
-            Someone in new just bought
-        </p>
-
-        <p class="toast-title">
-            Rose Gold Earrings
-        </p>
-
-        <p class="toast-meta">
-            <time datetime="PT2M">2 Minutes</time>
-            ago
-        </p>
-
-    </div>
-
-</div>
-{% endblock notification_toast %}
+{#{% block modal %}#}
+{#    <div class="modal" data-modal>#}
+{##}
+{#    <div class="modal-close-overlay" data-modal-overlay></div>#}
+{##}
+{#    <div class="modal-content">#}
+{##}
+{#        <button class="modal-close-btn" data-modal-close>#}
+{#            <ion-icon name="close-outline"></ion-icon>#}
+{#        </button>#}
+{##}
+{#        <div class="newsletter-img">#}
+{#            <img src="{% static 'images/newsletter.png'%}" alt="subscribe newsletter" width="400" height="400">#}
+{#        </div>#}
+{##}
+{#        <div class="newsletter">#}
+{##}
+{#            <form action="#">#}
+{##}
+{#                <div class="newsletter-header">#}
+{##}
+{#                    <h3 class="newsletter-title">Subscribe Newsletter.</h3>#}
+{##}
+{#                    <p class="newsletter-desc">#}
+{#                        Subscribe the <b>Anon</b> to get latest products and discount update.#}
+{#                    </p>#}
+{##}
+{#                </div>#}
+{##}
+{#                <input type="email" name="email" class="email-field" placeholder="Email Address" required>#}
+{##}
+{#                <button type="submit" class="btn-newsletter">Subscribe</button>#}
+{##}
+{#            </form>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+{##}
+{#</div>#}
+{#{% endblock modal %}#}
+{##}
+{#{% block notification_toast %}#}
+{#    <div class="notification-toast" data-toast>#}
+{##}
+{#    <button class="toast-close-btn" data-toast-close>#}
+{#        <ion-icon name="close-outline"></ion-icon>#}
+{#    </button>#}
+{##}
+{#    <div class="toast-banner">#}
+{#        <img src="{% static 'images/products/jewellery-1.jpg'%}" alt="Rose Gold Earrings" width="80" height="70">#}
+{#    </div>#}
+{##}
+{#    <div class="toast-detail">#}
+{##}
+{#        <p class="toast-message">#}
+{#            Someone in new just bought#}
+{#        </p>#}
+{##}
+{#        <p class="toast-title">#}
+{#            Rose Gold Earrings#}
+{#        </p>#}
+{##}
+{#        <p class="toast-meta">#}
+{#            <time datetime="PT2M">2 Minutes</time>#}
+{#            ago#}
+{#        </p>#}
+{##}
+{#    </div>#}
+{##}
+{#</div>#}
+{#{% endblock notification_toast %}#}
 
 {% block header %}
     <header>
@@ -86,31 +86,13 @@
         <div class="container">
 
             <ul class="header-social-container">
-
+                {% for network in networks %}
                 <li>
-                    <a href="#" class="social-link">
-                        <ion-icon name="logo-facebook"></ion-icon>
+                    <a href="{{ network.url }}" class="social-link" target="_blank">
+                        <img src="{{ network.photo.url }}" alt="{{ network.name }}" width="25" height="25">
                     </a>
                 </li>
-
-                <li>
-                    <a href="#" class="social-link">
-                        <ion-icon name="logo-twitter"></ion-icon>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#" class="social-link">
-                        <ion-icon name="logo-instagram"></ion-icon>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#" class="social-link">
-                        <ion-icon name="logo-linkedin"></ion-icon>
-                    </a>
-                </li>
-
+                {% endfor %}
             </ul>
 
             <div class="header-alert-news">
