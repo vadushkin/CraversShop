@@ -170,166 +170,15 @@
             <div class="container">
 
                 <ul class="desktop-menu-category-list">
+
                     {% recursetree MenuCategory %}
-
-                        {#                <li class="menu-category">#}
-                        {#                    <a href="#" class="menu-title">Categories</a>#}
-                        {#                    #}
-                        {#                    <div class="dropdown-panel">#}
-                        {##}
-                        {#                        <ul class="dropdown-panel-list">#}
-                        {##}
-                        {#                            <li class="menu-title">#}
-                        {#                                <a href="#">Electronics</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Desktop</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Laptop</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Camera</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Tablet</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Headphone</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">#}
-                        {#                                    <img src="{% static 'images/electronics-banner-1.jpg'%}" alt="headphone collection"#}
-                        {#                                         width="250"#}
-                        {#                                         height="119">#}
-                        {#                                </a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                        </ul>#}
-                        {##}
-                        {#                        <ul class="dropdown-panel-list">#}
-                        {##}
-                        {#                            <li class="menu-title">#}
-                        {#                                <a href="#">Men's</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Formal</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Casual</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Sports</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Jacket</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Sunglasses</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">#}
-                        {#                                    <img src="{% static 'images/mens-banner.jpg'%}" alt="men's fashion" width="250"#}
-                        {#                                         height="119">#}
-                        {#                                </a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                        </ul>#}
-                        {##}
-                        {#                        <ul class="dropdown-panel-list">#}
-                        {##}
-                        {#                            <li class="menu-title">#}
-                        {#                                <a href="#">Women's</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Formal</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Casual</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Perfume</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Cosmetics</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Bags</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">#}
-                        {#                                    <img src="{% static 'images/womens-banner.jpg'%}" alt="women's fashion" width="250"#}
-                        {#                                         height="119">#}
-                        {#                                </a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                        </ul>#}
-                        {##}
-                        {#                        <ul class="dropdown-panel-list">#}
-                        {##}
-                        {#                            <li class="menu-title">#}
-                        {#                                <a href="#">Electronics</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Smart Watch</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Smart TV</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Keyboard</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Mouse</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">Microphone</a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                            <li class="panel-list-item">#}
-                        {#                                <a href="#">#}
-                        {#                                    <img src="{% static 'images/electronics-banner-2.jpg'%}" alt="mouse collection"#}
-                        {#                                         width="250" height="119">#}
-                        {#                                </a>#}
-                        {#                            </li>#}
-                        {##}
-                        {#                        </ul>#}
-                        {##}
-                        {#                    </div>#}
-                        {#                </li>#}
-
                         <li class="menu-category">
                             <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
                             {% if not node.is_leaf_node %}
                                 <ul class="dropdown-list">
-
                                     <li class="dropdown-item">
                                         <a href="{{ children.get_absolute_url }}">{{ children }}</a>
                                     </li>
-
                                 </ul>
                             {% endif %}
                         </li>
@@ -380,151 +229,24 @@
         </div>
 
         <ul class="mobile-menu-category-list">
+            {% recursetree MenuCategory %}
 
-            <li class="menu-category">
-                <a href="#" class="menu-title">Home</a>
-            </li>
+                <li class="menu-category">
 
-            <li class="menu-category">
+                    <button class="accordion-menu" data-accordion-btn>
+                        <p class="menu-title">{{ node.title }}</p>
+                    </button>
+                    {% if not node.is_leaf_node %}
+                        <ul class="submenu-category-list" data-accordion>
 
-                <button class="accordion-menu" data-accordion-btn>
-                    <p class="menu-title">Men's</p>
+                            <li class="submenu-category">
+                                <a href="{{ children.get_absolute_url }}" class="submenu-title">{{ children }}</a>
+                            </li>
 
-                    <div>
-                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                    </div>
-                </button>
-
-                <ul class="submenu-category-list" data-accordion>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Shirt</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Shorts & Jeans</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Safety Shoes</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Wallet</a>
-                    </li>
-
-                </ul>
-
-            </li>
-
-            <li class="menu-category">
-
-                <button class="accordion-menu" data-accordion-btn>
-                    <p class="menu-title">Women's</p>
-
-                    <div>
-                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                    </div>
-                </button>
-
-                <ul class="submenu-category-list" data-accordion>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Dress & Frock</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Earrings</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Necklace</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Makeup Kit</a>
-                    </li>
-
-                </ul>
-
-            </li>
-
-            <li class="menu-category">
-
-                <button class="accordion-menu" data-accordion-btn>
-                    <p class="menu-title">Jewelry</p>
-
-                    <div>
-                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                    </div>
-                </button>
-
-                <ul class="submenu-category-list" data-accordion>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Earrings</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Couple Rings</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Necklace</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Bracelets</a>
-                    </li>
-
-                </ul>
-
-            </li>
-
-            <li class="menu-category">
-
-                <button class="accordion-menu" data-accordion-btn>
-                    <p class="menu-title">Perfume</p>
-
-                    <div>
-                        <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                        <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                    </div>
-                </button>
-
-                <ul class="submenu-category-list" data-accordion>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Clothes Perfume</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Deodorant</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Flower Fragrance</a>
-                    </li>
-
-                    <li class="submenu-category">
-                        <a href="#" class="submenu-title">Air Freshener</a>
-                    </li>
-
-                </ul>
-
-            </li>
-
-            <li class="menu-category">
-                <a href="#" class="menu-title">Blog</a>
-            </li>
-
-            <li class="menu-category">
-                <a href="#" class="menu-title">Hot Offers</a>
-            </li>
-
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endrecursetree %}
         </ul>
 
         <div class="menu-bottom">
@@ -683,22 +405,28 @@
             <div class="container">
                 <div class="category-item-container has-scrollbar">
                     {% for category in categories %}
-                        <div class="category-item">
-                            <div class="category-img-box">
-                                <img src="{{ category.photo.url }}" alt="{{ category.name }}" width="30">
-                            </div>
+                        {% if not category.parent %}
+                            <div class="category-item">
+                                <div class="category-img-box">
+                                    {% if category.photo %}
+                                        <img src="{{ category.photo.url }}" alt="{{ category.name }}" width="30">
 
-                            <div class="category-content-box">
-
-                                <div class="category-content-flex">
-                                    <h3 class="category-item-title">{{ category.name }}</h3>
-
-                                    <p class="category-item-amount"></p>
+                                    {% endif %}
                                 </div>
 
-                                <a href="{% url 'category' category.slug %}" class="category-btn">Show all</a>
+                                <div class="category-content-box">
+
+                                    <div class="category-content-flex">
+                                        <h3 class="category-item-title">{{ category.name }}</h3>
+
+                                        <p class="category-item-amount">Count</p>
+                                    </div>
+
+                                    <a href="{% url 'posts-by-category' category.slug %}" class="category-btn">Show
+                                        all</a>
+                                </div>
                             </div>
-                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

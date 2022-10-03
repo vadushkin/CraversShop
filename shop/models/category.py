@@ -12,7 +12,7 @@ class Category(models.Model):
         blank=True,
         verbose_name="Родитель"
     )
-    photo = models.FileField(upload_to='categories/', validators=[
+    photo = models.FileField(upload_to='categories/', blank=True, null=True, validators=[
         FileExtensionValidator(
             allowed_extensions=['img', 'svg', 'png', 'jpeg', 'ico', 'webp', 'jpg'],
             message="Этот формат фотографии не подходит"
