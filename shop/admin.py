@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from django_mptt_admin.admin import DjangoMpttAdmin
 
-from shop.models import social_network, category
+from shop.models import social_network, category, menu_category
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -46,5 +47,24 @@ class CategoryAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class MenuCategoryAdmin(DjangoMpttAdmin):
+    list_display = (
+        'title', 'parent', 'get_photo', 'slug', 'id',)
+    list_display_links = ('id', 'title',)
+    list_filter = ('title', 'slug',)
+    search_fields = ('title', 'slug',)
+    prepopulated_fields = {"slug": ("title",)}
+    fields = ('title', 'slug', 'parent', 'photo',)
+    readonly_fields = ('get_photo',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
+admin.site.register(menu_category.MenuCategory, MenuCategoryAdmin)

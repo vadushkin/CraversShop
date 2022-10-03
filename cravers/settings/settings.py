@@ -16,6 +16,8 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
 
     # additional
+    'mptt',
+    'django_mptt_admin',
     'debug_toolbar',
 ]
 

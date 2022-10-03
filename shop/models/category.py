@@ -14,7 +14,7 @@ class Category(models.Model):
     )
     photo = models.FileField(upload_to='categories/', validators=[
         FileExtensionValidator(
-            allowed_extensions=['img', 'svg', 'png', 'jpeg', 'ico', 'webp'],
+            allowed_extensions=['img', 'svg', 'png', 'jpeg', 'ico', 'webp', 'jpg'],
             message="Этот формат фотографии не подходит"
         )], verbose_name='Фотография')
 

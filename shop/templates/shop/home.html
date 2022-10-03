@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static mptt_tags %}
 
 {% block title %}
     {{ title }}
@@ -81,25 +81,25 @@
 {% block header %}
     <header>
 
-    <div class="header-top">
+        <div class="header-top">
 
-        <div class="container">
+            <div class="container">
 
-            <ul class="header-social-container">
-                {% for network in networks %}
-                <li>
-                    <a href="{{ network.url }}" class="social-link" target="_blank">
-                        <img src="{{ network.photo.url }}" alt="{{ network.name }}" width="25" height="25">
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
+                <ul class="header-social-container">
+                    {% for network in networks %}
+                        <li>
+                            <a href="{{ network.url }}" class="social-link" target="_blank">
+                                <img src="{{ network.photo.url }}" alt="{{ network.name }}" width="18" height="18">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
 
-            <div class="header-alert-news">
-                <p>
-                    <b>Free Shipping</b>
-                    This Week Order Over - $55
-                </p>
+                <div class="header-alert-news">
+                    <p>
+                        <b>Free Shipping</b>
+                        This Week Order Over - $55
+                    </p>
             </div>
 
             <div class="header-top-actions">
@@ -165,272 +165,179 @@
 
     </div>
 
-    <nav class="desktop-navigation-menu">
+        <nav class="desktop-navigation-menu">
 
-        <div class="container">
+            <div class="container">
 
-            <ul class="desktop-menu-category-list">
+                <ul class="desktop-menu-category-list">
+                    {% recursetree MenuCategory %}
 
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Home</a>
-                </li>
+                        {#                <li class="menu-category">#}
+                        {#                    <a href="#" class="menu-title">Categories</a>#}
+                        {#                    #}
+                        {#                    <div class="dropdown-panel">#}
+                        {##}
+                        {#                        <ul class="dropdown-panel-list">#}
+                        {##}
+                        {#                            <li class="menu-title">#}
+                        {#                                <a href="#">Electronics</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Desktop</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Laptop</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Camera</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Tablet</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Headphone</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">#}
+                        {#                                    <img src="{% static 'images/electronics-banner-1.jpg'%}" alt="headphone collection"#}
+                        {#                                         width="250"#}
+                        {#                                         height="119">#}
+                        {#                                </a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                        </ul>#}
+                        {##}
+                        {#                        <ul class="dropdown-panel-list">#}
+                        {##}
+                        {#                            <li class="menu-title">#}
+                        {#                                <a href="#">Men's</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Formal</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Casual</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Sports</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Jacket</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Sunglasses</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">#}
+                        {#                                    <img src="{% static 'images/mens-banner.jpg'%}" alt="men's fashion" width="250"#}
+                        {#                                         height="119">#}
+                        {#                                </a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                        </ul>#}
+                        {##}
+                        {#                        <ul class="dropdown-panel-list">#}
+                        {##}
+                        {#                            <li class="menu-title">#}
+                        {#                                <a href="#">Women's</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Formal</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Casual</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Perfume</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Cosmetics</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Bags</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">#}
+                        {#                                    <img src="{% static 'images/womens-banner.jpg'%}" alt="women's fashion" width="250"#}
+                        {#                                         height="119">#}
+                        {#                                </a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                        </ul>#}
+                        {##}
+                        {#                        <ul class="dropdown-panel-list">#}
+                        {##}
+                        {#                            <li class="menu-title">#}
+                        {#                                <a href="#">Electronics</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Smart Watch</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Smart TV</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Keyboard</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Mouse</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">Microphone</a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                            <li class="panel-list-item">#}
+                        {#                                <a href="#">#}
+                        {#                                    <img src="{% static 'images/electronics-banner-2.jpg'%}" alt="mouse collection"#}
+                        {#                                         width="250" height="119">#}
+                        {#                                </a>#}
+                        {#                            </li>#}
+                        {##}
+                        {#                        </ul>#}
+                        {##}
+                        {#                    </div>#}
+                        {#                </li>#}
 
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Categories</a>
+                        <li class="menu-category">
+                            <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
+                            {% if not node.is_leaf_node %}
+                                <ul class="dropdown-list">
 
-                    <div class="dropdown-panel">
+                                    <li class="dropdown-item">
+                                        <a href="{{ children.get_absolute_url }}">{{ children }}</a>
+                                    </li>
 
-                        <ul class="dropdown-panel-list">
-
-                            <li class="menu-title">
-                                <a href="#">Electronics</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Desktop</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Laptop</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Camera</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Tablet</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Headphone</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">
-                                    <img src="{% static 'images/electronics-banner-1.jpg'%}" alt="headphone collection"
-                                         width="250"
-                                         height="119">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <ul class="dropdown-panel-list">
-
-                            <li class="menu-title">
-                                <a href="#">Men's</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Formal</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Casual</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Sports</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Jacket</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Sunglasses</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">
-                                    <img src="{% static 'images/mens-banner.jpg'%}" alt="men's fashion" width="250"
-                                         height="119">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <ul class="dropdown-panel-list">
-
-                            <li class="menu-title">
-                                <a href="#">Women's</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Formal</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Casual</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Perfume</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Cosmetics</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Bags</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">
-                                    <img src="{% static 'images/womens-banner.jpg'%}" alt="women's fashion" width="250"
-                                         height="119">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                        <ul class="dropdown-panel-list">
-
-                            <li class="menu-title">
-                                <a href="#">Electronics</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Smart Watch</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Smart TV</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Keyboard</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Mouse</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">Microphone</a>
-                            </li>
-
-                            <li class="panel-list-item">
-                                <a href="#">
-                                    <img src="{% static 'images/electronics-banner-2.jpg'%}" alt="mouse collection"
-                                         width="250" height="119">
-                                </a>
-                            </li>
-
-                        </ul>
-
-                    </div>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Men's</a>
-
-                    <ul class="dropdown-list">
-
-                        <li class="dropdown-item">
-                            <a href="#">Shirt</a>
+                                </ul>
+                            {% endif %}
                         </li>
+                    {% endrecursetree %}
 
-                        <li class="dropdown-item">
-                            <a href="#">Shorts & Jeans</a>
-                        </li>
+                </ul>
 
-                        <li class="dropdown-item">
-                            <a href="#">Safety Shoes</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Wallet</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Women's</a>
-
-                    <ul class="dropdown-list">
-
-                        <li class="dropdown-item">
-                            <a href="#">Dress & Frock</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Earrings</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Necklace</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Makeup Kit</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Jewelry</a>
-
-                    <ul class="dropdown-list">
-
-                        <li class="dropdown-item">
-                            <a href="#">Earrings</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Couple Rings</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Necklace</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Bracelets</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Perfume</a>
-
-                    <ul class="dropdown-list">
-
-                        <li class="dropdown-item">
-                            <a href="#">Clothes Perfume</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Deodorant</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Flower Fragrance</a>
-                        </li>
-
-                        <li class="dropdown-item">
-                            <a href="#">Air Freshener</a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Blog</a>
-                </li>
-
-                <li class="menu-category">
-                    <a href="#" class="menu-title">Hot Offers</a>
-                </li>
-
-            </ul>
-
-        </div>
+            </div>
 
     </nav>
 
@@ -786,7 +693,7 @@
                                 <div class="category-content-flex">
                                     <h3 class="category-item-title">{{ category.name }}</h3>
 
-                                    <p class="category-item-amount">{{ category }}</p>
+                                    <p class="category-item-amount"></p>
                                 </div>
 
                                 <a href="{% url 'category' category.slug %}" class="category-btn">Show all</a>

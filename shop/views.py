@@ -1,12 +1,13 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 
 from shop.models.category import Category
 from shop.models.social_network import Network
+from shop.models.menu_category import MenuCategory
 
 
 class ShopHome(ListView):
-    model = Category
-    context_object_name = 'categories'
+    model = MenuCategory
+    context_object_name = 'MenuCategory'
     template_name = 'shop/home.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -16,9 +17,21 @@ class ShopHome(ListView):
         return context
 
 
-class CategoryView(DetailView):
+class CategoryListView(ListView):
+    model = Category
     template_name = 'shop/category.html'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+
+# class PostByCategoryView(ListView):
+#     context_object_name = 'posts'
+#     template_name = 'shop/post.html'
+#
+#     def get_queryset(self):
+#         self.category = Category.objects.get(slug=self.kwargs['slug'])
+#         queryset = Post.objects.filter(category=self.category)
+#         return queryset
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = self.category
+#         return context
