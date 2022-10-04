@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django_mptt_admin.admin import DjangoMpttAdmin
 
-from shop.models import social_network, category, menu_category
+from shop.models import social_network, category
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -25,36 +25,14 @@ class SocialNetworkAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(DjangoMpttAdmin):
     list_display = (
-        'id', 'name', 'slug', 'parent', 'photo', 'get_photo')
-    list_display_links = ('id', 'name')
-    list_filter = ('name', 'slug', )
-    search_fields = ('name', 'slug', )
-    prepopulated_fields = {'slug': ('name',), }
-    fields = ('name',
-              'slug',
-              'parent',
-              'photo',
-              )
-    readonly_fields = ('get_photo',)
-
-    @staticmethod
-    def get_photo(obj):
-        if obj.photo:
-            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
-        else:
-            return 'Фотографии нет'
-
-
-class MenuCategoryAdmin(DjangoMpttAdmin):
-    list_display = (
-        'title', 'parent', 'get_photo', 'slug', 'id',)
+        'title', 'parent', 'is_menu_field', 'get_photo', 'slug', 'id',)
     list_display_links = ('id', 'title',)
     list_filter = ('title', 'slug',)
     search_fields = ('title', 'slug',)
     prepopulated_fields = {"slug": ("title",)}
-    fields = ('title', 'slug', 'parent', 'photo',)
+    fields = ('title', 'slug', 'parent', 'is_menu_field', 'photo',)
     readonly_fields = ('get_photo',)
 
     @staticmethod
@@ -67,4 +45,3 @@ class MenuCategoryAdmin(DjangoMpttAdmin):
 
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
-admin.site.register(menu_category.MenuCategory, MenuCategoryAdmin)

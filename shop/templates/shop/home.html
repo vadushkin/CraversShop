@@ -170,39 +170,50 @@
             <div class="container">
 
                 <ul class="desktop-menu-category-list">
+                    <li class="menu-category">
+                        <a href="/" class="menu-title">Home</a>
+                    </li>
 
-                    {% recursetree MenuCategory %}
-                        <li class="menu-category">
-                            <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
-                            {% if not node.is_leaf_node %}
-                                <ul class="dropdown-list">
-                                    <li class="dropdown-item">
-                                        <a href="{{ children.get_absolute_url }}">{{ children }}</a>
-                                    </li>
-                                </ul>
-                            {% endif %}
-                        </li>
+                    {% recursetree categories %}
+                        {% if node.is_menu_field %}
+                            <li class="menu-category">
+                                <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
+                                {% if not node.is_leaf_node %}
+                                    <ul class="dropdown-list">
+                                        <li class="dropdown-item">
+                                            <a href="{{ children.get_absolute_url }}">{{ children }}</a>
+                                        </li>
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endif %}
                     {% endrecursetree %}
+                    <li class="menu-category">
+                        <a href="blog/" class="menu-title">BLOG</a>
+                    </li>
+                    <li class="menu-category">
+                        <a href="hot-offers/" class="menu-title">HOT OFFERS</a>
+                    </li>
 
                 </ul>
 
             </div>
 
-    </nav>
+        </nav>
 
-    <div class="mobile-bottom-navigation">
+        <div class="mobile-bottom-navigation">
 
-        <button class="action-btn" data-mobile-menu-open-btn>
-            <ion-icon name="menu-outline"></ion-icon>
-        </button>
+            <button class="action-btn" data-mobile-menu-open-btn>
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
 
-        <button class="action-btn">
-            <ion-icon name="bag-handle-outline"></ion-icon>
+            <button class="action-btn">
+                <ion-icon name="bag-handle-outline"></ion-icon>
 
-            <span class="count">0</span>
-        </button>
+                <span class="count">0</span>
+            </button>
 
-        <button class="action-btn">
+            <button class="action-btn">
             <ion-icon name="home-outline"></ion-icon>
         </button>
 
@@ -229,7 +240,10 @@
         </div>
 
         <ul class="mobile-menu-category-list">
-            {% recursetree MenuCategory %}
+            <li class="menu-category">
+                <a href="/" class="menu-title">Home</a>
+            </li>
+            {% recursetree categories %}
 
                 <li class="menu-category">
 
@@ -247,6 +261,13 @@
                     {% endif %}
                 </li>
             {% endrecursetree %}
+            <li class="menu-category">
+                <a href="blog/" class="menu-title">BLOG</a>
+            </li>
+            <li class="menu-category">
+                <a href="hot-offers/" class="menu-title">HOT OFFERS</a>
+            </li>
+
         </ul>
 
         <div class="menu-bottom">
@@ -405,19 +426,18 @@
             <div class="container">
                 <div class="category-item-container has-scrollbar">
                     {% for category in categories %}
-                        {% if not category.parent %}
+                        {% if category.parent and category.photo %}
                             <div class="category-item">
                                 <div class="category-img-box">
                                     {% if category.photo %}
-                                        <img src="{{ category.photo.url }}" alt="{{ category.name }}" width="30">
-
+                                        <img src="{{ category.photo.url }}" alt="{{ category.title }}" width="30">
                                     {% endif %}
                                 </div>
 
                                 <div class="category-content-box">
 
                                     <div class="category-content-flex">
-                                        <h3 class="category-item-title">{{ category.name }}</h3>
+                                        <h3 class="category-item-title">{{ category.title }}</h3>
 
                                         <p class="category-item-amount">Count</p>
                                     </div>
@@ -459,20 +479,19 @@
                         </div>
 
                         <ul class="sidebar-menu-category-list">
-                        {{ categories }}
-                        {# todo Вывести родительские категории #}
                             {% for category in categories %}
-                                {% if not category.parent %}
+                                {% if category.photo and not category.parent %}
                                     <li class="sidebar-menu-category">
 
                                         <button class="sidebar-accordion-menu" data-accordion-btn>
 
                                             <div class="menu-title-flex">
-                                                <img src="{{ category.photo.url }}" alt="{{ category.name }}" width="20"
+                                                <img src="{{ category.photo.url }}" alt="{{ category.title }}"
+                                                     width="20"
                                                      height="20"
                                                      class="menu-title-img">
 
-                                                <p class="menu-title">{{ category.name }}</p>
+                                                <p class="menu-title">{{ category.title }}</p>
                                             </div>
 
                                             <div>
@@ -487,7 +506,7 @@
                                                 <li class="sidebar-submenu-category">
                                                     <a href="{{ parent.get_absolute_url }}"
                                                        class="sidebar-submenu-title">
-                                                        <p class="product-name">{{ parent.name }}</p>
+                                                        <p class="product-name">{{ parent.title }}</p>
                                                         <data value="300" class="stock" title="Available Stock">Count
                                                         </data>
                                                     </a>
