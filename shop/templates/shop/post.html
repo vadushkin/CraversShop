@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Post</h1>
+{% for i in product %}
+    {{ i.title }}
+{% endfor %}
 </body>
 </html>

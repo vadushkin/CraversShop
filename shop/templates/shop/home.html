@@ -180,14 +180,17 @@
                                 <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
                                 {% if not node.is_leaf_node %}
                                     <ul class="dropdown-list">
+                                    {% for children in node.children.all %}
                                         <li class="dropdown-item">
-                                            <a href="{{ children.get_absolute_url }}">{{ children }}</a>
+                                            <a href="{{ children.get_absolute_url }}">{{ children.title }}</a>
                                         </li>
+                                    {% endfor %}
                                     </ul>
                                 {% endif %}
                             </li>
                         {% endif %}
                     {% endrecursetree %}
+
                     <li class="menu-category">
                         <a href="blog/" class="menu-title">BLOG</a>
                     </li>
@@ -502,7 +505,8 @@
                                         </button>
 
                                         <ul class="sidebar-submenu-category-list" data-accordion>
-                                            {% for parent in category.parent.all %}
+                                        {# todo Неработает #}
+                                            {% for parent in category.parent %}
                                                 <li class="sidebar-submenu-category">
                                                     <a href="{{ parent.get_absolute_url }}"
                                                        class="sidebar-submenu-title">

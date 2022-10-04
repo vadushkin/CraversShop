@@ -1,6 +1,7 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from shop.models.category import Category
+from shop.models.product import Product
 from shop.models.social_network import Network
 
 
@@ -21,16 +22,15 @@ class CategoryListView(ListView):
     template_name = 'shop/category.html'
 
 
-# class PostByCategoryView(ListView):
-#     context_object_name = 'posts'
-#     template_name = 'shop/post.html'
-#
-#     def get_queryset(self):
-#         self.category = Category.objects.get(slug=self.kwargs['slug'])
-#         queryset = Post.objects.filter(category=self.category)
-#         return queryset
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = self.category
-#         return context
+class ProductDetailView(DetailView):
+    context_object_name = 'product'
+    template_name = 'shop/post.html'
+
+    def get_queryset(self):
+        queryset = Product.objects.filter(slug=self.kwargs['slug'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.kwargs["slug"].title()
+        return context
