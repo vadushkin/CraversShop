@@ -14,6 +14,7 @@ class ShopHome(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Cravers'
         context['networks'] = Network.objects.all()
+        context['products'] = Product.objects.all()
         return context
 
 
