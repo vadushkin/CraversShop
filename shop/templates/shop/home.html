@@ -679,30 +679,31 @@
                             <div class="showcase-wrapper has-scrollbar">
 
                                 <div class="showcase-container">
-                                    {% for new_post in new_products %}
+
+                                    {% for product in new_products %}
                                         <div class="showcase">
 
-                                            <a href="{{ new_post.get_absolute_url }}" class="showcase-img-box">
-                                                <img src="{{ new_post.photo.url }}"
-                                                     alt="{{ new_post.title }}" width="70" class="showcase-img">
+                                            <a href="{{ product.get_absolute_url }}" class="showcase-img-box">
+                                                <img src="{{ product.photo.url }}"
+                                                     alt="{{ product.title }}" width="70" class="showcase-img">
                                             </a>
 
                                             <div class="showcase-content">
 
-                                                <a href="{{ new_post.get_absolute_url }}">
-                                                    <h4 class="showcase-title">{{ new_post.title }}</h4>
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    <h4 class="showcase-title">{{ product.title }}</h4>
                                                 </a>
 
-                                                <a href="{{ new_post.category.get_absolute_url }}"
-                                                   class="showcase-category">{{ new_post.category }}</a>
+                                                <a href="{{ product.category.get_absolute_url }}"
+                                                   class="showcase-category">{{ product.category }}</a>
 
                                                 <div class="price-box">
                                                     {% if product.sale > 0 %}
                                                         <p class="price">
-                                                            ${{ new_post.price|sale_price:product.sale }}</p>
-                                                        <del>${{ new_post.price }}.00</del>
+                                                            ${{ product.price|sale_price:product.sale }}</p>
+                                                        <del>${{ product.price }}.00</del>
                                                     {% else %}
-                                                        <p class="price">${{ new_post.price }}.00</p>
+                                                        <p class="price">${{ product.price }}.00</p>
                                                     {% endif %}
                                                 </div>
 
@@ -713,219 +714,50 @@
 
 
                                 </div>
+
                             </div>
 
                         </div>
 
                         <div class="product-showcase">
 
-                            <h2 class="title">Trending</h2>
+                            <h2 class="title">Most Expensive</h2>
 
                             <div class="showcase-wrapper  has-scrollbar">
 
                                 <div class="showcase-container">
 
-                                    <div class="showcase">
+                                    {% for product in most_expensive_products %}
+                                        <div class="showcase">
 
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/sports-1.jpg'%}"
-                                                 alt="running & trekking shoes - white" class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Running & Trekking Shoes - White</h4>
+                                            <a href="{{ product.get_absolute_url }}" class="showcase-img-box">
+                                                <img src="{{ product.photo.url }}"
+                                                     alt="{{ product.title }}" width="70" class="showcase-img">
                                             </a>
 
-                                            <a href="#" class="showcase-category">Sports</a>
+                                            <div class="showcase-content">
 
-                                            <div class="price-box">
-                                                <p class="price">$49.00</p>
-                                                <del>$15.00</del>
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    <h4 class="showcase-title">{{ product.title }}</h4>
+                                                </a>
+
+                                                <a href="{{ product.category.get_absolute_url }}"
+                                                   class="showcase-category">{{ product.category }}</a>
+
+                                                <div class="price-box">
+                                                    {% if product.sale > 0 %}
+                                                        <p class="price">
+                                                            ${{ product.price|sale_price:product.sale }}</p>
+                                                        <del>${{ product.price }}.00</del>
+                                                    {% else %}
+                                                        <p class="price">${{ product.price }}.00</p>
+                                                    {% endif %}
+                                                </div>
+
                                             </div>
 
                                         </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/sports-2.jpg'%}"
-                                                 alt="trekking & running shoes - black" class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Trekking & Running Shoes - black</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">Sports</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$78.00</p>
-                                                <del>$36.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/party-wear-1.jpg'%}"
-                                                 alt="womens party wear shoes" class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Womens Party Wear Shoes</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">Party wear</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$94.00</p>
-                                                <del>$42.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/sports-3.jpg'%}" alt="sports claw women's shoes"
-                                                 class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Sports Claw Women's Shoes</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">Sports</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$54.00</p>
-                                                <del>$65.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="showcase-container">
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/sports-6.jpg'%}" alt="air tekking shoes - white"
-                                                 class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Air Trekking Shoes - white</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">Sports</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$52.00</p>
-                                                <del>$55.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/shoe-3.jpg'%}" alt="Boot With Suede Detail"
-                                                 class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Boot With Suede Detail</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">boots</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$20.00</p>
-                                                <del>$30.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/shoe-1.jpg'%}"
-                                                 alt="men's leather formal wear shoes" class="showcase-img"
-                                                 width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Men's Leather Formal Wear shoes</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">formal</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$56.00</p>
-                                                <del>$78.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="showcase">
-
-                                        <a href="#" class="showcase-img-box">
-                                            <img src="{% static 'images/products/shoe-2.jpg'%}" alt="casual men's brown shoes"
-                                                 class="showcase-img" width="70">
-                                        </a>
-
-                                        <div class="showcase-content">
-
-                                            <a href="#">
-                                                <h4 class="showcase-title">Casual Men's Brown shoes</h4>
-                                            </a>
-
-                                            <a href="#" class="showcase-category">Casual</a>
-
-                                            <div class="price-box">
-                                                <p class="price">$50.00</p>
-                                                <del>$55.00</del>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
+                                    {% endfor %}
 
                                 </div>
 
