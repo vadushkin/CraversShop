@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django_mptt_admin.admin import DjangoMpttAdmin
 
-from shop.models import social_network, category, product
+from shop.models import social_network, category, product, product_of_the_day
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -95,6 +95,22 @@ class ProductAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class ProductOfTheDayAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'quantity',
+        'product',
+        'created_at',
+    )
+    list_display_links = ('id',)
+    fields = (
+        'quantity',
+        'product',
+    )
+    readonly_fields = ('created_at',)
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
+admin.site.register(product_of_the_day.ProductOfTheDay, ProductOfTheDayAdmin)

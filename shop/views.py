@@ -2,6 +2,7 @@ from django.views.generic import ListView, DetailView
 
 from shop.models.category import Category
 from shop.models.product import Product
+from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
 
 
@@ -18,6 +19,7 @@ class ShopHome(ListView):
         context['new_products'] = Product.objects.select_related('category').order_by("-updated_at")[:4]
         context['top_rated_products'] = Product.objects.select_related('category').order_by("-stars")[:4]
         context['most_expensive_products'] = Product.objects.select_related('category').order_by("-price")[:4]
+        context['product_of_the_day'] = ProductOfTheDay.objects.select_related('product').order_by("-created_at")[0]
         return context
 
 
