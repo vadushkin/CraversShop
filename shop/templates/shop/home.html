@@ -1538,7 +1538,11 @@
                                         {% endif %}
 
                                         {% if product.sale > 0 %}
-                                            <p class="showcase-badge angle black">sale</p>
+                                            <p class="showcase-badge">{{ product.sale }}%</p>
+                                        {% else %}
+                                            {% if product.is_on_closeout %}
+                                                <p class="showcase-badge angle black">sale</p>
+                                            {% endif %}
                                         {% endif %}
 
                                         <div class="showcase-actions">

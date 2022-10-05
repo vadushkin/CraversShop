@@ -25,7 +25,7 @@ def give_another_stars(stars: int) -> range:
 
 @register.filter
 def give_range_stars(stars: int) -> range:
-    """Возвращает остающиеся звезды"""
+    """Возвращает все звезды"""
     try:
         return range(int(stars))
     except:
