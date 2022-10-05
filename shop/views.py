@@ -13,8 +13,11 @@ class ShopHome(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Cravers'
-        context['networks'] = Network.objects.all()
-        context['products'] = Product.objects.all()
+        context['networks'] = Network.objects.all()[:5]
+        context['last_products'] = Product.objects.select_related('category').order_by("-updated_at")[:12]
+        context['new_products'] = Product.objects.select_related('category').order_by("-created_at")[:4]
+        context['top_rated_products'] = Product.objects.select_related('category').order_by("-stars")[:4]
+        context['most_expensive_products'] = Product.objects.select_related('category').order_by("-price")[:4]
         return context
 
 

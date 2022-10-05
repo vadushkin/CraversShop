@@ -37,7 +37,7 @@ class Category(MPTTModel):
     is_menu_field = models.BooleanField(verbose_name="Это категория меню?")
 
     def __str__(self):
-        return f'{self.title} | Родитель - {self.parent}' if self.parent else self.title
+        return f'{self.title}'
 
     @classmethod
     def get_default_pk(cls):

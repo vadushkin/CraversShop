@@ -60,7 +60,7 @@ class Product(models.Model):
         verbose_name="Скидка",
         default=0,
         blank=True,
-        validators=[validate_even]
+        validators=[validate_even],
     )
     stars = models.CharField(
         max_length=1,
@@ -69,7 +69,15 @@ class Product(models.Model):
         verbose_name="Звёзды",
     )
     is_on_closeout = models.BooleanField(
-        verbose_name="На распродаже?"
+        verbose_name="На распродаже?",
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name="Дата обновления",
+    )
+    created_at = models.DateField(
+        auto_now_add=True,
+        verbose_name="Дата создания",
     )
 
     def __str__(self):

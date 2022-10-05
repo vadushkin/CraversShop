@@ -79,10 +79,13 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'photo',
         'photo_back',
+        'updated_at',
+        'created_at',
         'sale',
         'stars',
-        'is_on_closeout',)
-    readonly_fields = ('get_photo',)
+        'is_on_closeout',
+    )
+    readonly_fields = ('get_photo', 'created_at', 'updated_at')
 
     @staticmethod
     def get_photo(obj):
