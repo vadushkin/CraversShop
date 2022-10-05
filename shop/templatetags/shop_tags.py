@@ -11,3 +11,22 @@ def sale_price(price: int, sale: int) -> str:
     except:
         pass
     return format(price, '.2f')
+
+
+@register.filter
+def give_another_stars(stars: int) -> range:
+    """Возвращает остающиеся звезды"""
+    try:
+        stars = 5 - int(stars)
+    except:
+        pass
+    return range(stars)
+
+
+@register.filter
+def give_range_stars(stars: int) -> range:
+    """Возвращает остающиеся звезды"""
+    try:
+        return range(int(stars))
+    except:
+        pass

@@ -1523,14 +1523,21 @@
                                 <div class="showcase">
 
                                     <div class="showcase-banner">
+
                                         <img src="{{ product.photo.url }}" alt="{{ product.title }}"
                                              class="product-img default"
                                              width="300">
-                                        <img src="{{ product.photo_back.url }}" alt="{{ product.title }}"
-                                             class="product-img hover"
-                                             width="300">
+                                        {% if product.photo_back %}
+                                            <img src="{{ product.photo_back.url }}" alt="{{ product.title }}"
+                                                 class="product-img hover"
+                                                 width="300">
+                                        {% else %}
+                                            <img src="{{ product.photo.url }}" alt="{{ product.title }}"
+                                                 class="product-img hover"
+                                                 width="300">
+                                        {% endif %}
 
-                                        {% if product.sale > 1 %}
+                                        {% if product.sale > 0 %}
                                             <p class="showcase-badge angle black">sale</p>
                                         {% endif %}
 
@@ -1562,17 +1569,18 @@
                                         </h3>
 
                                         <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star-outline"></ion-icon>
-                                            <ion-icon name="star-outline"></ion-icon>
+                                            {% for star in product.stars|give_range_stars %}
+                                                <ion-icon name="star"></ion-icon>
+                                            {% endfor %}
+                                            {% for item in product.stars|give_another_stars %}
+                                                <ion-icon name="star-outline"></ion-icon>
+                                            {% endfor %}
                                         </div>
 
                                         <div class="price-box">
                                             {% if product.sale > 0 %}
                                                 <p class="price">
-                                                    ${{ product.price|sale_price:product.sale}}</p>
+                                                    ${{ product.price|sale_price:product.sale }}</p>
                                                 <del>${{ product.price }}.00</del>
                                             {% else %}
                                                 <p class="price">${{ product.price }}.00</p>
