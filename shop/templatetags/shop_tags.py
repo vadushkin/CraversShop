@@ -30,3 +30,16 @@ def give_range_stars(stars: int) -> range:
         return range(int(stars))
     except:
         pass
+
+
+@register.filter
+def give_percent(quantity: int, sold: int) -> int:
+    """Возвращает процент от числа"""
+    try:
+        if sold is None:
+            # todo вместо 265 нужно 100 и поменять css
+            return 1 * 265 // quantity
+        else:
+            return sold * 265 // quantity
+    except:
+        pass

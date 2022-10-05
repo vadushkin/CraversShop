@@ -816,7 +816,7 @@
                     <!--
                       - PRODUCT FEATURED
                     -->
-
+                    {% if product_of_the_day %}
                     <div class="product-featured">
 
                         <h2 class="title">Deal of the day</h2>
@@ -865,15 +865,21 @@
                                         <div class="showcase-status">
                                             <div class="wrapper">
                                                 <p>
-                                                    already sold: <b>20</b>
+                                                    {% if product_of_the_day.sold %}
+                                                        already sold: <b>{{ product_of_the_day.sold }}</b>
+                                                    {% else %}
+                                                        already sold: <b>0</b>
+                                                    {% endif %}
                                                 </p>
 
                                                 <p>
                                                     available: <b>{{ product_of_the_day.quantity }}</b>
                                                 </p>
                                             </div>
-
-                                            <div class="showcase-status-bar"></div>
+                                            {# todo линия немного выходит, нужно переопредилить width в css, а не тут #}
+                                            <div class="showcase-status-bar"
+                                                 style="width: {{ product_of_the_day.quantity|give_percent:product_of_the_day.sold }}%">
+                                            </div>
                                         </div>
 
                                         <div class="countdown-box">
@@ -883,7 +889,7 @@
                                             </p>
 
                                             <div class="countdown">
-
+                                                {# todo todo #}
                                                 <div class="countdown-content">
 
                                                     <p class="display-number">360</p>
@@ -920,7 +926,7 @@
                         </div>
 
                     </div>
-
+                    {% endif %}
 
                     <!--
                       - PRODUCT GRID

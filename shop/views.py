@@ -19,7 +19,8 @@ class ShopHome(ListView):
         context['new_products'] = Product.objects.select_related('category').order_by("-updated_at")[:4]
         context['top_rated_products'] = Product.objects.select_related('category').order_by("-stars")[:4]
         context['most_expensive_products'] = Product.objects.select_related('category').order_by("-price")[:4]
-        context['product_of_the_day'] = ProductOfTheDay.objects.select_related('product').order_by("-created_at")[0]
+        context['product_of_the_day'] = (
+            ProductOfTheDay.objects.filter(open=True).select_related('product').order_by("-created_at").last())
         return context
 
 

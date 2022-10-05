@@ -99,15 +99,18 @@ class ProductOfTheDayAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'quantity',
+        'open',
+        'sold',
         'product',
         'created_at',
     )
     list_display_links = ('id',)
     fields = (
         'quantity',
+        'open',
         'product',
     )
-    readonly_fields = ('created_at',)
+    readonly_fields = ('created_at', 'sold',)
 
 
 admin.site.register(social_network.Network, SocialNetworkAdmin)
