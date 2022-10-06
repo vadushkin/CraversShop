@@ -1,4 +1,5 @@
 from shop.models.best_product import BestProduct
+from shop.models.blog import Blog
 from shop.models.category import Category
 from shop.models.our_service import Service
 from shop.models.product import Product
@@ -12,4 +13,5 @@ __all__ = (
     "ProductOfTheDay",
     "BestProduct",
     "Service",
+    "Blog",
 )

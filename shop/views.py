@@ -1,11 +1,12 @@
 from django.views.generic import ListView, DetailView
 
 from shop.models.best_product import BestProduct
+from shop.models.blog import Blog
 from shop.models.category import Category
+from shop.models.our_service import Service
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
-from shop.models.our_service import Service
 
 
 class ShopHome(ListView):
@@ -40,6 +41,20 @@ class ProductDetailView(DetailView):
 
     def get_queryset(self):
         queryset = Product.objects.filter(slug=self.kwargs['slug'])
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.kwargs["slug"].title()
+        return context
+
+
+class BlogDetailView(DetailView):
+    context_object_name = 'blog'
+    template_name = 'shop/blog.html'
+
+    def get_queryset(self):
+        queryset = Blog.objects.filter(slug=self.kwargs['slug'])
         return queryset
 
     def get_context_data(self, **kwargs):
