@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django_mptt_admin.admin import DjangoMpttAdmin
 
-from shop.models import social_network, category, product, product_of_the_day
+from shop.models import social_network, category, product, product_of_the_day, best_product
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -113,7 +113,21 @@ class ProductOfTheDayAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'sold',)
 
 
+class BestProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'product',
+        'created_at',
+    )
+    list_display_links = ('id',)
+    fields = (
+        'product',
+    )
+    readonly_fields = ('created_at',)
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
 admin.site.register(product_of_the_day.ProductOfTheDay, ProductOfTheDayAdmin)
+admin.site.register(best_product.BestProduct, BestProductAdmin)

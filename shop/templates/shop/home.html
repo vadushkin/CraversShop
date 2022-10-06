@@ -528,133 +528,50 @@
 
                     <div class="product-showcase">
 
-                        <h3 class="showcase-heading">best sellers</h3>
+                        <h3 class="showcase-heading">best products</h3>
 
                         <div class="showcase-wrapper">
 
                             <div class="showcase-container">
+                                {% for product in best_product %}
+                                    <div class="showcase">
 
-                                <div class="showcase">
-
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="{% static 'images/products/1.jpg'%}" alt="baby fabric shoes" width="75"
-                                             height="75"
-                                             class="showcase-img">
-                                    </a>
-
-                                    <div class="showcase-content">
-
-                                        <a href="#">
-                                            <h4 class="showcase-title">baby fabric shoes</h4>
+                                        <a href="#" class="showcase-img-box">
+                                            <img src="{{ product.product.photo.url }}" alt="{{ product.product.title }}"
+                                                 width="75"
+                                                 height="75"
+                                                 class="showcase-img">
                                         </a>
 
-                                        <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
+                                        <div class="showcase-content">
 
-                                        <div class="price-box">
-                                            <del>$5.00</del>
-                                            <p class="price">$4.00</p>
+                                            <a href="{{ product.product.get_absolute_url }}">
+                                                <h4 class="showcase-title">{{ product.product.title }}s</h4>
+                                            </a>
+
+                                            <div class="showcase-rating">
+                                                {% for star in product.product.stars|give_range_stars %}
+                                                    <ion-icon name="star"></ion-icon>
+                                                {% endfor %}
+                                                {% for item in product.product.stars|give_another_stars %}
+                                                    <ion-icon name="star-outline"></ion-icon>
+                                                {% endfor %}
+                                            </div>
+
+                                            <div class="price-box">
+                                                {% if product.product.sale > 0 %}
+                                                    <p class="price">
+                                                        ${{ product.product.price|sale_price:product.product.sale }}</p>
+                                                    <del>${{ product.product.price }}.00</del>
+                                                {% else %}
+                                                    <p class="price">${{ product.product.price }}.00</p>
+                                                {% endif %}
+                                            </div>
+
                                         </div>
 
                                     </div>
-
-                                </div>
-
-                                <div class="showcase">
-
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="{% static 'images/products/2.jpg'%}" alt="men's hoodies t-shirt"
-                                             class="showcase-img"
-                                             width="75" height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-
-                                        <a href="#">
-                                            <h4 class="showcase-title">men's hoodies t-shirt</h4>
-                                        </a>
-                                        <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star-half-outline"></ion-icon>
-                                        </div>
-
-                                        <div class="price-box">
-                                            <del>$17.00</del>
-                                            <p class="price">$7.00</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="showcase">
-
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="{% static 'images/products/3.jpg'%}" alt="girls t-shirt" class="showcase-img"
-                                             width="75"
-                                             height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-
-                                        <a href="#">
-                                            <h4 class="showcase-title">girls t-shirt</h4>
-                                        </a>
-                                        <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star-half-outline"></ion-icon>
-                                        </div>
-
-                                        <div class="price-box">
-                                            <del>$5.00</del>
-                                            <p class="price">$3.00</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <div class="showcase">
-
-                                    <a href="#" class="showcase-img-box">
-                                        <img src="{% static 'images/products/4.jpg'%}" alt="woolen hat for men"
-                                             class="showcase-img" width="75"
-                                             height="75">
-                                    </a>
-
-                                    <div class="showcase-content">
-
-                                        <a href="#">
-                                            <h4 class="showcase-title">woolen hat for men</h4>
-                                        </a>
-                                        <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                        </div>
-
-                                        <div class="price-box">
-                                            <del>$15.00</del>
-                                            <p class="price">$12.00</p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
+                                {% endfor %}
                             </div>
 
                         </div>
@@ -984,7 +901,8 @@
                                     </div>
 
                                     <div class="showcase-content">
-                                        <a href="#" class="showcase-category">{{ product.category }}</a>
+                                        <a href="{{ product.category.get_absolute_url }}"
+                                           class="showcase-category">{{ product.category }}</a>
 
                                         <h3>
                                             <a href="{{ product.get_absolute_url }}"
