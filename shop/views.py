@@ -5,6 +5,7 @@ from shop.models.category import Category
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
+from shop.models.our_service import Service
 
 
 class ShopHome(ListView):
@@ -17,6 +18,7 @@ class ShopHome(ListView):
         # todo сделать кеш для большинства запросов
         context['title'] = 'Cravers'
         context['networks'] = Network.objects.all()[:5]
+        context['our_services'] = Service.objects.all()
         context['best_product'] = BestProduct.objects.all().select_related('product')
         context['last_products'] = Product.objects.select_related('category').order_by("-created_at")[:12]
         context['new_products'] = Product.objects.select_related('category').order_by("-updated_at")[:4]

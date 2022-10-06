@@ -2,7 +2,9 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django_mptt_admin.admin import DjangoMpttAdmin
 
-from shop.models import social_network, category, product, product_of_the_day, best_product
+from shop.models import social_network, \
+    category, product, product_of_the_day, \
+    best_product, our_service
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -126,8 +128,36 @@ class BestProductAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at',)
 
 
+class OurServiceAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'description',
+        'url',
+        'photo',
+        'get_photo')
+    list_display_links = ('id', 'title',)
+    list_filter = ('title',)
+    search_fields = ('title', 'description', 'url',)
+    fields = (
+        'title',
+        'description',
+        'url',
+        'photo',
+    )
+    readonly_fields = ('get_photo',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
 admin.site.register(product_of_the_day.ProductOfTheDay, ProductOfTheDayAdmin)
 admin.site.register(best_product.BestProduct, BestProductAdmin)
+admin.site.register(our_service.Service, OurServiceAdmin)
