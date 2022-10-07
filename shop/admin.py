@@ -4,7 +4,8 @@ from django_mptt_admin.admin import DjangoMpttAdmin
 
 from shop.models import social_network, \
     category, product, product_of_the_day, \
-    best_product, our_service, blog, comment
+    best_product, our_service, blog, comment, \
+    banner
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -220,6 +221,26 @@ class CommentAdmin(admin.ModelAdmin):
     )
     readonly_fields = ('created_at',)
 
+
+class BannerAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'category',
+        'price_from',
+        'get_photo',
+    )
+    list_display_links = ('id', 'title',)
+    list_filter = ('title',)
+    search_fields = ('title',)
+    fields = (
+        'title',
+        'category',
+        'price_from',
+        'photo',
+    )
+    readonly_fields = ('get_photo',)
+
     @staticmethod
     def get_photo(obj):
         if obj.photo:
@@ -236,3 +257,4 @@ admin.site.register(best_product.BestProduct, BestProductAdmin)
 admin.site.register(our_service.Service, OurServiceAdmin)
 admin.site.register(blog.Blog, BlogAdmin)
 admin.site.register(comment.Comment, CommentAdmin)
+admin.site.register(banner.Banner, BannerAdmin)

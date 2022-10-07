@@ -29,7 +29,7 @@
 {#                    <h3 class="newsletter-title">Subscribe Newsletter.</h3>#}
 {##}
 {#                    <p class="newsletter-desc">#}
-{#                        Subscribe the <b>Anon</b> to get latest products and discount update.#}
+{#                        Subscribe the <b>Cravers</b> to get latest products and discount update.#}
 {#                    </p>#}
 {##}
 {#                </div>#}
@@ -129,7 +129,7 @@
 
         <div class="container">
 
-            <a href="#" class="header-logo">
+            <a href="/" class="header-logo">
                 <img src="{% static 'images/logo/logo.svg'%}" alt="Logo" width="120" height="36">
             </a>
 
@@ -192,7 +192,7 @@
                     {% endrecursetree %}
 
                     <li class="menu-category">
-                        <a href="blog/" class="menu-title">BLOG</a>
+                        <a href="blogs/" class="menu-title">BLOG</a>
                     </li>
                     <li class="menu-category">
                         <a href="hot-offers/" class="menu-title">HOT OFFERS</a>
@@ -243,11 +243,12 @@
         </div>
 
         <ul class="mobile-menu-category-list">
+
             <li class="menu-category">
                 <a href="/" class="menu-title">Home</a>
             </li>
-            {% recursetree categories %}
 
+            {% recursetree categories %}
                 <li class="menu-category">
 
                     <button class="accordion-menu" data-accordion-btn>
@@ -264,9 +265,11 @@
                     {% endif %}
                 </li>
             {% endrecursetree %}
+
             <li class="menu-category">
-                <a href="blog/" class="menu-title">BLOG</a>
+                <a href="blogs/" class="menu-title">BLOG</a>
             </li>
+
             <li class="menu-category">
                 <a href="hot-offers/" class="menu-title">HOT OFFERS</a>
             </li>
@@ -353,67 +356,30 @@
             <div class="container">
 
                 <div class="slider-container has-scrollbar">
+                    {% for banner in banners %}
+                        <div class="slider-item">
+                        {# todo нет фотографии #}
+                            <img src="{{ banner.photo.url }}"
+                                 alt="{{ banner.title }}"
+                                 class="banner-img">
 
-                    <div class="slider-item">
+                            <div class="banner-content">
 
-                        <img src="{% static 'images/banner-1.jpg'%}" alt="women's latest fashion sale" class="banner-img">
+                                <p class="banner-subtitle">{{ banner.category }}</p>
 
-                        <div class="banner-content">
+                                <h2 class="banner-title">{{ banner.title }}</h2>
 
-                            <p class="banner-subtitle">Trending item</p>
+                                <p class="banner-text">
+                                    starting at &dollar;<b>{{ banner.price_from }}</b>.00
+                                </p>
 
-                            <h2 class="banner-title">Women's latest fashion sale</h2>
+                                <a href="{{ banner.category.get_absolute_url }}"
+                                   class="banner-btn">Shop now</a>
 
-                            <p class="banner-text">
-                                starting at &dollar; <b>20</b>.00
-                            </p>
-
-                            <a href="#" class="banner-btn">Shop now</a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="slider-item">
-
-                        <img src="{% static 'images/banner-2.jpg'%}" alt="modern sunglasses" class="banner-img">
-
-                        <div class="banner-content">
-
-                            <p class="banner-subtitle">Trending accessories</p>
-
-                            <h2 class="banner-title">Modern sunglasses</h2>
-
-                            <p class="banner-text">
-                                starting at &dollar; <b>15</b>.00
-                            </p>
-
-                            <a href="#" class="banner-btn">Shop now</a>
+                            </div>
 
                         </div>
-
-                    </div>
-
-                    <div class="slider-item">
-
-                        <img src="{% static 'images/banner-3.jpg'%}" alt="new fashion summer sale" class="banner-img">
-
-                        <div class="banner-content">
-
-                            <p class="banner-subtitle">Sale Offer</p>
-
-                            <h2 class="banner-title">New fashion summer sale</h2>
-
-                            <p class="banner-text">
-                                starting at &dollar; <b>29</b>.99
-                            </p>
-
-                            <a href="#" class="banner-btn">Shop now</a>
-
-                        </div>
-
-                    </div>
-
+                    {% endfor %}
                 </div>
 
             </div>
@@ -1078,7 +1044,7 @@
                                 </a>
 
                                 <p class="blog-meta">
-                                    By <cite>{{ blog.author }}</cite> /
+                                    By <cite>{{ blog.author.username }}</cite> /
                                     <time datetime="{{ blog.created_at }}">{{ blog.created_at }}</time>
                                 </p>
 
@@ -1350,7 +1316,7 @@
                 <img src="{% static 'images/payment.png'%}" alt="payment method" class="payment-img">
 
                 <p class="copyright">
-                    Copyright &copy; <a href="#">Anon</a> all rights reserved.
+                    Copyright &copy; <a href="/">Cravers</a> all rights reserved.
                 </p>
             </div>
         </div>

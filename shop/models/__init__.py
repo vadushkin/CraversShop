@@ -1,3 +1,4 @@
+from shop.models.banner import Banner
 from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
 from shop.models.category import Category
@@ -16,4 +17,5 @@ __all__ = (
     "Service",
     "Blog",
     "Comment",
+    "Banner"
 )
