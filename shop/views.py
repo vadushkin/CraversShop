@@ -18,8 +18,9 @@ class ShopHome(ListView):
         context = super().get_context_data(**kwargs)
         # todo сделать кеш для большинства запросов
         context['title'] = 'Cravers'
+        context['blogs'] = Blog.objects.select_related('category').order_by("-created_at")[:4]
         context['networks'] = Network.objects.all()[:5]
-        context['our_services'] = Service.objects.all()
+        context['our_services'] = Service.objects.all()[:5]
         context['best_product'] = BestProduct.objects.all().select_related('product')
         context['last_products'] = Product.objects.select_related('category').order_by("-created_at")[:12]
         context['new_products'] = Product.objects.select_related('category').order_by("-updated_at")[:4]

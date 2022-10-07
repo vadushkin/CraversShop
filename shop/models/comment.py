@@ -4,7 +4,7 @@ from django.db import models
 from .blog import Blog
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     # todo Это набросок коментов
     text = models.TextField(
         verbose_name="Текст комментария",
@@ -20,6 +20,7 @@ class Comments(models.Model):
         User,
         on_delete=models.DO_NOTHING,
         verbose_name="Автор",
+        editable=False,
     )
 
     created_at = models.DateField(

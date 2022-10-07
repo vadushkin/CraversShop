@@ -1058,30 +1058,33 @@
                 <div class="blog-container has-scrollbar">
 
                     {% for blog in blogs %}
-                    <div class="blog-card">
+                        <div class="blog-card">
 
-                        <a href="#">
-                            <img src="{% static 'images/blog-1.jpg'%}"
-                                 alt="Clothes Retail KPIs 2021 Guide for Clothes Executives" width="300"
-                                 class="blog-banner">
-                        </a>
-
-                        <div class="blog-content">
-
-                            <a href="#" class="blog-category">Fashion</a>
-
-                            <a href="#">
-                                <h3 class="blog-title">Clothes Retail KPIs 2021 Guide for Clothes Executives.</h3>
+                            <a href="{{ blog.get_absolute_url }}">
+                                <img src="{{ blog.photo.url }}"
+                                     alt="{{ blog.title }}"
+                                     width="300"
+                                     height="180"
+                                     class="blog-banner">
                             </a>
 
-                            <p class="blog-meta">
-                                By <cite>Mr Admin</cite> /
-                                <time datetime="2022-04-06">Apr 06, 2022</time>
-                            </p>
+                            <div class="blog-content">
+
+                                <a href="{{ blog.category.get_absolute_url }}"
+                                   class="blog-category">{{ blog.category.title }}</a>
+
+                                <a href="{{ blog.get_absolute_url }}">
+                                    <h3 class="blog-title">{{ blog.title }}</h3>
+                                </a>
+
+                                <p class="blog-meta">
+                                    By <cite>{{ blog.author }}</cite> /
+                                    <time datetime="{{ blog.created_at }}">{{ blog.created_at }}</time>
+                                </p>
+
+                            </div>
 
                         </div>
-
-                    </div>
                     {% endfor %}
 
                 </div>

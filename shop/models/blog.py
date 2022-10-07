@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -19,8 +20,11 @@ class Blog(models.Model):
         verbose_name="Текст",
     )
 
-    author = models.TextField(
+    author = models.ForeignKey(
+        User,
+        on_delete=models.DO_NOTHING,
         verbose_name="Автор",
+        editable=False,
     )
 
     category = models.ForeignKey(

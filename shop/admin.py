@@ -4,7 +4,7 @@ from django_mptt_admin.admin import DjangoMpttAdmin
 
 from shop.models import social_network, \
     category, product, product_of_the_day, \
-    best_product, our_service
+    best_product, our_service, blog, comment
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -44,7 +44,7 @@ class CategoryAdmin(DjangoMpttAdmin):
     list_display_links = ('id', 'title',)
     list_filter = ('title', 'slug',)
     search_fields = ('title', 'slug',)
-    prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {'slug': ('title',)}
     fields = ('title', 'slug', 'parent', 'is_menu_field', 'photo',)
     readonly_fields = ('get_photo',)
 
@@ -72,7 +72,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title',)
     list_filter = ('title', 'slug',)
     search_fields = ('title', 'slug',)
-    prepopulated_fields = {"slug": ("title",)}
+    prepopulated_fields = {'slug': ('title',)}
     fields = (
         'title',
         'slug',
@@ -155,9 +155,84 @@ class OurServiceAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class BlogAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'slug',
+        'text',
+        'author',
+        'category',
+        'get_photo',
+        'stars',
+        'likes',
+        'created_at',
+        'updated_at',
+    )
+    prepopulated_fields = {'slug': ('title',)}
+    list_display_links = ('id', 'title',)
+    list_filter = ('title', 'slug', 'text',)
+    search_fields = ('title', 'text', 'author',)
+    fields = (
+        'title',
+        'slug',
+        'text',
+        'stars',
+        'category',
+        'photo',
+    )
+    readonly_fields = ('get_photo', 'created_at', 'updated_at',)
+
+    def save_model(self, request, obj, form, change):
+        """Переопределяем метод сохранения модели """
+        if not change:
+            obj.author = request.user
+
+        super(BlogAdmin, self).save_model(
+            request=request,
+            obj=obj,
+            form=form,
+            change=change
+        )
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'text',
+        'blog',
+        'author',
+        'created_at',
+    )
+    list_display_links = ('id',)
+    list_filter = ('text',)
+    search_fields = ('text', 'author',)
+    fields = (
+        'text',
+        'blog',
+    )
+    readonly_fields = ('created_at',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
 admin.site.register(product_of_the_day.ProductOfTheDay, ProductOfTheDayAdmin)
 admin.site.register(best_product.BestProduct, BestProductAdmin)
 admin.site.register(our_service.Service, OurServiceAdmin)
+admin.site.register(blog.Blog, BlogAdmin)
+admin.site.register(comment.Comment, CommentAdmin)
