@@ -3,6 +3,7 @@ from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
 from shop.models.category import Category
 from shop.models.comment import Comment
+from shop.models.contact import Contact
 from shop.models.our_service import Service
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
@@ -17,5 +18,6 @@ __all__ = (
     "Service",
     "Blog",
     "Comment",
-    "Banner"
+    "Banner",
+    "Contact",
 )

@@ -5,7 +5,7 @@ from django_mptt_admin.admin import DjangoMpttAdmin
 from shop.models import social_network, \
     category, product, product_of_the_day, \
     best_product, our_service, blog, comment, \
-    banner
+    banner, contact
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -249,6 +249,27 @@ class BannerAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'email',
+        'phone',
+        'locate',
+    )
+    list_display_links = ('id', 'email', 'phone',)
+    list_filter = ('email',)
+    search_fields = (
+        'email',
+        'phone',
+        'locate',
+    )
+    fields = (
+        'email',
+        'phone',
+        'locate',
+    )
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
@@ -258,3 +279,4 @@ admin.site.register(our_service.Service, OurServiceAdmin)
 admin.site.register(blog.Blog, BlogAdmin)
 admin.site.register(comment.Comment, CommentAdmin)
 admin.site.register(banner.Banner, BannerAdmin)
+admin.site.register(contact.Contact, ContactAdmin)
