@@ -8,6 +8,7 @@ from shop.models.our_service import Service
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
+from shop.models.our_company import OurCompany
 
 __all__ = (
     "Network",
@@ -20,4 +21,5 @@ __all__ = (
     "Comment",
     "Banner",
     "Contact",
+    "OurCompany",
 )

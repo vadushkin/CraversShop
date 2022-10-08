@@ -5,6 +5,7 @@ from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
 from shop.models.category import Category
 from shop.models.contact import Contact
+from shop.models.our_company import OurCompany
 from shop.models.our_service import Service
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
@@ -28,6 +29,7 @@ class ShopHome(ListView):
         context['blogs'] = Blog.objects.select_related('category').select_related('author').order_by("-created_at")[:4]
         context['banners'] = Banner.objects.select_related('category')
         context['networks'] = Network.objects.all()[:5]
+        context['company'] = OurCompany.objects.all()[:5]
         context['our_services'] = Service.objects.all()[:5]
         context['best_product'] = BestProduct.objects.all().select_related('product')
         context['last_products'] = Product.objects.select_related('category').order_by("-created_at")[:12]

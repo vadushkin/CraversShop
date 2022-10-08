@@ -1180,27 +1180,14 @@
                     <li class="footer-nav-item">
                         <h2 class="nav-title">Our Company</h2>
                     </li>
+                    {% for service in company %}
+                        <li class="footer-nav-item">
+                            <a href="{{ service.url }}"
+                               class="footer-nav-link"
+                               target="_blank">{{ service.title }}</a>
+                        </li>
 
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Delivery</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Legal Notice</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Terms and conditions</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">About us</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Secure payment</a>
-                    </li>
-
+                    {% endfor %}
                 </ul>
 
                 <ul class="footer-nav-list">
@@ -1208,29 +1195,17 @@
                     <li class="footer-nav-item">
                         <h2 class="nav-title">Services</h2>
                     </li>
+                    {% for service in our_services %}
+                        <li class="footer-nav-item">
+                            <a href="{{ service.url }}"
+                               class="footer-nav-link"
+                               target="_blank">{{ service.title }}</a>
+                        </li>
 
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Prices drop</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">New products</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Best sales</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Contact us</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Sitemap</a>
-                    </li>
+                    {% endfor %}
 
                 </ul>
-                {% if phone %}
+
                 <ul class="footer-nav-list">
 
                     <li class="footer-nav-item">
@@ -1264,8 +1239,6 @@
                     </li>
 
                 </ul>
-                {% endif %}
-
 
                 <ul class="footer-nav-list">
 
@@ -1275,31 +1248,17 @@
 
                     <li>
                         <ul class="social-link">
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-facebook"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-twitter"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-linkedin"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li class="footer-nav-item">
-                                <a href="#" class="footer-nav-link">
-                                    <ion-icon name="logo-instagram"></ion-icon>
-                                </a>
-                            </li>
-
+                            {% for network in networks %}
+                                <li class="footer-nav-item">
+                                    <a href="{{ network.url }}"
+                                       class="footer-nav-link">
+                                        <img src="{{ network.photo.url }}"
+                                             alt="{{ network.name }}"
+                                             width="18"
+                                             height="18">
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </li>
 
