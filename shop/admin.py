@@ -5,7 +5,8 @@ from django_mptt_admin.admin import DjangoMpttAdmin
 from shop.models import social_network, \
     category, product, product_of_the_day, \
     best_product, our_service, blog, comment, \
-    banner, contact, our_company, popular_categories
+    banner, contact, our_company, popular_categories, \
+    testimonial
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -249,6 +250,33 @@ class BannerAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class LowerBannerAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'category',
+        'price_from',
+        'get_photo',
+    )
+    list_display_links = ('id', 'title',)
+    list_filter = ('title',)
+    search_fields = ('title',)
+    fields = (
+        'title',
+        'category',
+        'price_from',
+        'photo',
+    )
+    readonly_fields = ('get_photo',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -303,6 +331,36 @@ class PopularCategoryAdmin(admin.ModelAdmin):
     )
 
 
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+        'get_photo',
+        'position',
+        'description',
+    )
+    list_display_links = ('id', 'name',)
+    list_filter = ('name',)
+    search_fields = (
+        'name',
+        'description',
+    )
+    fields = (
+        'name',
+        'photo',
+        'position',
+        'description',
+    )
+    readonly_fields = ('get_photo',)
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
@@ -315,3 +373,4 @@ admin.site.register(banner.Banner, BannerAdmin)
 admin.site.register(contact.Contact, ContactAdmin)
 admin.site.register(our_company.OurCompany, OurCompanyAdmin)
 admin.site.register(popular_categories.PopularCategory, PopularCategoryAdmin)
+admin.site.register(testimonial.Testimonial, TestimonialAdmin)

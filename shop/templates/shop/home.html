@@ -928,19 +928,20 @@
                         <h2 class="title">testimonial</h2>
 
                         <div class="testimonial-card">
-
-                            <img src="{% static 'images/testimonial-1.jpg'%}" alt="alan doe" class="testimonial-banner"
+                            {% if testimonial.photo %}
+                            <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
+                                 class="testimonial-banner"
                                  width="80" height="80">
+                            {% endif %}
+                            <p class="testimonial-name">{{ testimonial.name }}</p>
 
-                            <p class="testimonial-name">Alan Doe</p>
+                            <p class="testimonial-title">{{ testimonial.position }}</p>
 
-                            <p class="testimonial-title">CEO & Founder Invision</p>
-
-                            <img src="{% static 'images/icons/quotes.svg'%}" alt="quotation" class="quotation-img" width="26">
+                            <img src="{% static 'images/icons/quotes.svg' %}" alt="quotation" class="quotation-img"
+                                 width="26">
 
                             <p class="testimonial-desc">
-                                Lorem ipsum dolor sit amet consectetur Lorem ipsum
-                                dolor dolor sit amet.
+                                {{ testimonial.description }}
                             </p>
 
                         </div>
@@ -954,7 +955,7 @@
 
                     <div class="cta-container">
 
-                        <img src="{% static 'images/cta-banner.jpg'%}" alt="summer collection" class="cta-banner">
+                        <img src="" alt="summer collection" class="cta-banner">
 
                         <a href="#" class="cta-content">
 
@@ -1127,6 +1128,7 @@
         </div>
         <div class="footer-nav">
             <div class="container">
+
                 <ul class="footer-nav-list">
                     <li class="footer-nav-item">
                         <h2 class="nav-title">Popular Categories</h2>
@@ -1137,34 +1139,6 @@
                                class="footer-nav-link">{{ popular_category.category.title }}</a>
                         </li>
                     {% endfor %}
-
-                </ul>
-                <ul class="footer-nav-list">
-
-                    <li class="footer-nav-item">
-                        <h2 class="nav-title">Products</h2>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Prices drop</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">New products</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Best sales</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Contact us</a>
-                    </li>
-
-                    <li class="footer-nav-item">
-                        <a href="#" class="footer-nav-link">Sitemap</a>
-                    </li>
-
                 </ul>
 
                 <ul class="footer-nav-list">
@@ -1263,8 +1237,6 @@
         <div class="footer-bottom">
 
             <div class="container">
-
-                <img src="{% static 'images/payment.png'%}" alt="payment method" class="payment-img">
 
                 <p class="copyright">
                     Copyright &copy; <a href="/">Cravers</a> all rights reserved.

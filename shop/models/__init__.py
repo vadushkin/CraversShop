@@ -10,6 +10,8 @@ from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
 from shop.models.our_company import OurCompany
 from shop.models.popular_categories import PopularCategory
+from shop.models.testimonial import Testimonial
+from shop.models.lower_banner import LowerBanner
 
 __all__ = (
     "Network",
@@ -24,4 +26,6 @@ __all__ = (
     "Contact",
     "OurCompany",
     "PopularCategory",
+    "Testimonial",
+    "LowerBanner",
 )
