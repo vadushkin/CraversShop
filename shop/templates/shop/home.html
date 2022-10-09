@@ -486,7 +486,7 @@
                                 {% for product in best_product %}
                                     <div class="showcase">
 
-                                        <a href="#" class="showcase-img-box">
+                                        <a href="{{ product.product.get_absolute_url }}" class="showcase-img-box">
                                             <img src="{{ product.product.photo.url }}" alt="{{ product.product.title }}"
                                                  width="75"
                                                  height="75"
@@ -496,7 +496,7 @@
                                         <div class="showcase-content">
 
                                             <a href="{{ product.product.get_absolute_url }}">
-                                                <h4 class="showcase-title">{{ product.product.title }}s</h4>
+                                                <h4 class="showcase-title">{{ product.product.title }}</h4>
                                             </a>
 
                                             <div class="showcase-rating">
