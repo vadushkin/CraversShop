@@ -6,7 +6,7 @@ from shop.models import social_network, \
     category, product, product_of_the_day, \
     best_product, our_service, blog, comment, \
     banner, contact, our_company, popular_categories, \
-    testimonial
+    testimonial, lower_banner
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -254,6 +254,7 @@ class LowerBannerAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'title',
+        'sale',
         'category',
         'price_from',
         'get_photo',
@@ -264,6 +265,7 @@ class LowerBannerAdmin(admin.ModelAdmin):
     fields = (
         'title',
         'category',
+        'sale',
         'price_from',
         'photo',
     )
@@ -374,3 +376,4 @@ admin.site.register(contact.Contact, ContactAdmin)
 admin.site.register(our_company.OurCompany, OurCompanyAdmin)
 admin.site.register(popular_categories.PopularCategory, PopularCategoryAdmin)
 admin.site.register(testimonial.Testimonial, TestimonialAdmin)
+admin.site.register(lower_banner.LowerBanner, LowerBannerAdmin)

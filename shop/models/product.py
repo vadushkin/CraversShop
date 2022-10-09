@@ -18,13 +18,16 @@ class Product(models.Model):
         max_length=50,
         verbose_name='Название',
     )
+
     slug = models.SlugField(
         verbose_name="Слаг",
     )
+
     description = models.TextField(
         verbose_name="Описание",
         max_length=300,
     )
+
     category = models.ForeignKey(
         Category,
         blank=True,
@@ -32,6 +35,7 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         verbose_name="Категория",
     )
+
     photo = models.FileField(
         upload_to='products/',
         verbose_name='Фотография',
@@ -41,6 +45,7 @@ class Product(models.Model):
                 message="Этот формат фотографии не подходит"
             )],
     )
+
     photo_back = models.FileField(
         upload_to='products/',
         verbose_name='Обратная фотография',
@@ -52,22 +57,26 @@ class Product(models.Model):
                 message="Этот формат фотографии не подходит"
             )],
     )
+
     price = models.PositiveIntegerField(
         verbose_name="Цена",
         default=0,
     )
+
     sale = models.PositiveIntegerField(
         verbose_name="Скидка",
         default=0,
         blank=True,
         validators=[validate_even],
     )
+
     stars = models.CharField(
         max_length=1,
         choices=[('1', 1), ('2', 2), ('3', 3), ('4', 4), ('5', 5)],
         default=1,
         verbose_name="Звёзды",
     )
+
     is_on_closeout = models.BooleanField(
         verbose_name="На распродаже?",
     )

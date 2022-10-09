@@ -926,26 +926,26 @@
                     <div class="testimonial">
 
                         <h2 class="title">testimonial</h2>
+                        {% if testimonial %}
+                            <div class="testimonial-card">
+                                {% if testimonial.photo %}
+                                <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
+                                     class="testimonial-banner"
+                                     width="80" height="80">
+                                {% endif %}
+                                <p class="testimonial-name">{{ testimonial.name }}</p>
 
-                        <div class="testimonial-card">
-                            {% if testimonial.photo %}
-                            <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
-                                 class="testimonial-banner"
-                                 width="80" height="80">
-                            {% endif %}
-                            <p class="testimonial-name">{{ testimonial.name }}</p>
+                                <p class="testimonial-title">{{ testimonial.position }}</p>
 
-                            <p class="testimonial-title">{{ testimonial.position }}</p>
+                                <img src="{% static 'images/icons/quotes.svg' %}" alt="quotation" class="quotation-img"
+                                     width="26">
 
-                            <img src="{% static 'images/icons/quotes.svg' %}" alt="quotation" class="quotation-img"
-                                 width="26">
+                                <p class="testimonial-desc">
+                                    {{ testimonial.description }}
+                                </p>
 
-                            <p class="testimonial-desc">
-                                {{ testimonial.description }}
-                            </p>
-
-                        </div>
-
+                            </div>
+                        {% endif %}
                     </div>
 
 
@@ -954,21 +954,21 @@
                     -->
 
                     <div class="cta-container">
+                        {% if lower_banner %}
+                            <img src="{{ lower_banner.photo.url }}" alt="{{ lower_banner.title }}" class="cta-banner">
 
-                        <img src="" alt="summer collection" class="cta-banner">
+                            <a href="{{ lower_banner.category.get_absolute_url }}" class="cta-content">
 
-                        <a href="#" class="cta-content">
+                                <p class="discount">{{ lower_banner.sale }}% Discount</p>
 
-                            <p class="discount">25% Discount</p>
+                                <h2 class="cta-title">{{ lower_banner.title }}</h2>
 
-                            <h2 class="cta-title">Summer collection</h2>
+                                <p class="cta-text">Starting @ ${{ lower_banner.price_from }}</p>
 
-                            <p class="cta-text">Starting @ $10</p>
+                                <button class="cta-btn">Shop now</button>
 
-                            <button class="cta-btn">Shop now</button>
-
-                        </a>
-
+                            </a>
+                        {% endif %}
                     </div>
 
 
