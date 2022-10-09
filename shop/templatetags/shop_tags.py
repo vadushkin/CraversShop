@@ -37,9 +37,8 @@ def give_percent(quantity: int, sold: int) -> int:
     """Возвращает процент от числа"""
     try:
         if sold is None:
-            # todo вместо 265 нужно 100 и поменять css
-            return 1 * 265 // quantity
+            return 1 * 100 // quantity
         else:
-            return sold * 265 // quantity
+            return sold * 100 // quantity
     except:
         pass

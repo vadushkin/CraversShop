@@ -107,15 +107,12 @@
                 <select name="currency">
 
                     <option value="usd">USD &dollar;</option>
-                    <option value="eur">EUR &euro;</option>
 
                 </select>
 
                 <select name="language">
 
                     <option value="en-US">English</option>
-                    <option value="es-ES">Espa&ntilde;ol</option>
-                    <option value="fr">Fran&ccedil;ais</option>
 
                 </select>
 
@@ -292,15 +289,7 @@
                     <ul class="submenu-category-list" data-accordion>
 
                         <li class="submenu-category">
-                            <a href="#" class="submenu-title">English</a>
-                        </li>
-
-                        <li class="submenu-category">
-                            <a href="#" class="submenu-title">Espa&ntilde;ol</a>
-                        </li>
-
-                        <li class="submenu-category">
-                            <a href="#" class="submenu-title">Fren&ccedil;h</a>
+                            <a href="/" class="submenu-title">English</a>
                         </li>
 
                     </ul>
@@ -308,19 +297,18 @@
                 </li>
 
                 <li class="menu-category">
+
                     <button class="accordion-menu" data-accordion-btn>
                         <p class="menu-title">Currency</p>
                         <ion-icon name="caret-back-outline" class="caret-back"></ion-icon>
                     </button>
 
                     <ul class="submenu-category-list" data-accordion>
-                        <li class="submenu-category">
-                            <a href="#" class="submenu-title">USD &dollar;</a>
-                        </li>
 
                         <li class="submenu-category">
-                            <a href="#" class="submenu-title">EUR &euro;</a>
+                            <a href="/" class="submenu-title">USD &dollar;</a>
                         </li>
+
                     </ul>
                 </li>
 
@@ -407,8 +395,6 @@
 
                                     <div class="category-content-flex">
                                         <h3 class="category-item-title">{{ category.title }}</h3>
-
-                                        <p class="category-item-amount">Count</p>
                                     </div>
 
                                     <a href="{% url 'posts-by-category' category.slug %}" class="category-btn">Show
@@ -477,9 +463,6 @@
                                                         <a href="{{ child.get_absolute_url }}"
                                                            class="sidebar-submenu-title">
                                                             <p class="product-name">{{ child.title }}</p>
-                                                            <data value="300" class="stock" title="Available Stock">
-                                                                Count
-                                                            </data>
                                                         </a>
                                                     </li>
                                                 {% endfor %}
@@ -495,7 +478,7 @@
 
                     <div class="product-showcase">
 
-                        <h3 class="showcase-heading">best products</h3>
+                        <h3 class="showcase-heading">Best Products</h3>
 
                         <div class="showcase-wrapper">
 
@@ -701,47 +684,47 @@
                       - PRODUCT FEATURED
                     -->
                     {% if product_of_the_day %}
-                    <div class="product-featured">
+                        <div class="product-featured">
 
-                        <h2 class="title">Deal of the day</h2>
+                            <h2 class="title">Deal of The Day</h2>
 
-                        <div class="showcase-wrapper has-scrollbar">
+                            <div class="showcase-wrapper has-scrollbar">
 
-                            <div class="showcase-container">
-                                <div class="showcase">
+                                <div class="showcase-container">
+                                    <div class="showcase">
 
-                                    <div class="showcase-banner">
-                                        <img src="{{ product_of_the_day.product.photo.url }}"
-                                             alt="{{ product_of_the_day.product.title }}" class="showcase-img">
-                                    </div>
-
-                                    <div class="showcase-content">
-
-                                        <div class="showcase-rating">
-                                            {% for star in product_of_the_day.product.stars|give_range_stars %}
-                                                <ion-icon name="star"></ion-icon>
-                                            {% endfor %}
-                                            {% for item in product_of_the_day.product.stars|give_another_stars %}
-                                                <ion-icon name="star-outline"></ion-icon>
-                                            {% endfor %}
+                                        <div class="showcase-banner">
+                                            <img src="{{ product_of_the_day.product.photo.url }}"
+                                                 alt="{{ product_of_the_day.product.title }}" class="showcase-img">
                                         </div>
 
-                                        <a href="{{ product_of_the_day.product.get_absolute_url }}">
-                                            <h3 class="showcase-title">{{ product_of_the_day.product.title }}</h3>
-                                        </a>
+                                        <div class="showcase-content">
 
-                                        <p class="showcase-desc">
-                                            {{ product_of_the_day.product.description }}
-                                        </p>
+                                            <div class="showcase-rating">
+                                                {% for star in product_of_the_day.product.stars|give_range_stars %}
+                                                    <ion-icon name="star"></ion-icon>
+                                                {% endfor %}
+                                                {% for item in product_of_the_day.product.stars|give_another_stars %}
+                                                    <ion-icon name="star-outline"></ion-icon>
+                                                {% endfor %}
+                                            </div>
 
-                                        <div class="price-box">
-                                            {% if product_of_the_day.product.sale > 0 %}
-                                                <p class="price">
-                                                    ${{ product_of_the_day.product.price|sale_price:product_of_the_day.product.sale }}</p>
-                                                <del>${{ product_of_the_day.product.price }}.00</del>
-                                            {% else %}
-                                                <p class="price">${{ product_of_the_day.product.price }}.00</p>
-                                            {% endif %}
+                                            <a href="{{ product_of_the_day.product.get_absolute_url }}">
+                                                <h3 class="showcase-title">{{ product_of_the_day.product.title }}</h3>
+                                            </a>
+
+                                            <p class="showcase-desc">
+                                                {{ product_of_the_day.product.description }}
+                                            </p>
+
+                                            <div class="price-box">
+                                                {% if product_of_the_day.product.sale > 0 %}
+                                                    <p class="price">
+                                                        ${{ product_of_the_day.product.price|sale_price:product_of_the_day.product.sale }}</p>
+                                                    <del>${{ product_of_the_day.product.price }}.00</del>
+                                                {% else %}
+                                                    <p class="price">${{ product_of_the_day.product.price }}.00</p>
+                                                {% endif %}
                                         </div>
 
                                         <button class="add-cart-btn">add to cart</button>
@@ -760,44 +743,14 @@
                                                     available: <b>{{ product_of_the_day.quantity }}</b>
                                                 </p>
                                             </div>
-                                            {# todo линия немного выходит, нужно переопредилить width в css, а не тут #}
-                                            <div class="showcase-status-bar"
-                                                 style="width: {{ product_of_the_day.quantity|give_percent:product_of_the_day.sold }}%">
+                                            <div class="showcase-status-bar">
+                                                <style>
+                                                    .product-featured .showcase-status-bar::before {
+                                                        width: {{ product_of_the_day.quantity|give_percent:product_of_the_day.sold }}%;
+                                                    }
+                                                </style>
                                             </div>
                                         </div>
-
-                                        <div class="countdown-box">
-
-                                            <p class="countdown-desc">
-                                                Hurry Up! Offer ends in:
-                                            </p>
-
-                                            <div class="countdown">
-                                                {# todo todo #}
-                                                <div class="countdown-content">
-
-                                                    <p class="display-number">360</p>
-
-                                                    <p class="display-text">Days</p>
-
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">24</p>
-                                                    <p class="display-text">Hours</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">59</p>
-                                                    <p class="display-text">Min</p>
-                                                </div>
-
-                                                <div class="countdown-content">
-                                                    <p class="display-number">00</p>
-                                                    <p class="display-text">Sec</p>
-                                                </div>
-
-                                            </div>
 
                                         </div>
 
@@ -808,8 +761,6 @@
                             </div>
 
                         </div>
-
-                    </div>
                     {% endif %}
 
                     <!--

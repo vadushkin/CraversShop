@@ -11,9 +11,11 @@ class Category(MPTTModel):
         unique=True,
         verbose_name='Название',
     )
+
     slug = models.SlugField(
         verbose_name="Слаг",
     )
+
     parent = TreeForeignKey(
         'self',
         on_delete=models.PROTECT,
@@ -23,6 +25,7 @@ class Category(MPTTModel):
         related_name='children',
         verbose_name='Родительская категория',
     )
+
     photo = models.FileField(
         upload_to='categories/',
         blank=True,
