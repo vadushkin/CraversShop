@@ -58,34 +58,44 @@ class ShopHome(ListView):
         return Category.objects.all().prefetch_related('children')
 
 
-class CategoryListView(ListView):
-    model = Category
+class ProductsByCategoryListView(ListView):
+    model = Product
+    context_object_name = 'products'
     template_name = 'shop/category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.kwargs["slug"].title()
+        return context
+
+    def get_queryset(self):
+        queryset = Product.objects.filter(category__slug=self.kwargs['slug'])
+        return queryset
 
 
 class ProductDetailView(DetailView):
     context_object_name = 'product'
     template_name = 'shop/post.html'
 
-    def get_queryset(self):
-        queryset = Product.objects.filter(slug=self.kwargs['slug'])
-        return queryset
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.kwargs["slug"].title()
         return context
+
+    def get_queryset(self):
+        queryset = Product.objects.filter(slug=self.kwargs['slug'])
+        return queryset
 
 
 class BlogDetailView(DetailView):
     context_object_name = 'blog'
     template_name = 'shop/blog.html'
 
-    def get_queryset(self):
-        queryset = Blog.objects.filter(slug=self.kwargs['slug'])
-        return queryset
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.kwargs["slug"].title()
         return context
+
+    def get_queryset(self):
+        queryset = Blog.objects.filter(slug=self.kwargs['slug'])
+        return queryset
