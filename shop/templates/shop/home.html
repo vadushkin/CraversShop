@@ -929,9 +929,9 @@
                         {% if testimonial %}
                             <div class="testimonial-card">
                                 {% if testimonial.photo %}
-                                <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
-                                     class="testimonial-banner"
-                                     width="80" height="80">
+                                    <img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}"
+                                         class="testimonial-banner"
+                                         width="80" height="80">
                                 {% endif %}
                                 <p class="testimonial-name">{{ testimonial.name }}</p>
 
@@ -1068,64 +1068,19 @@
         <div class="footer-category">
             <div class="container">
                 <h2 class="footer-category-title">Brand directory</h2>
-                <div class="footer-category-box">
-                    <h3 class="category-box-title">Fashion :</h3>
-                    <a href="#" class="footer-category-link">T-shirt</a>
-                    <a href="#" class="footer-category-link">Shirts</a>
-                    <a href="#" class="footer-category-link">shorts & jeans</a>
-                    <a href="#" class="footer-category-link">jacket</a>
-                    <a href="#" class="footer-category-link">dress & frock</a>
-                    <a href="#" class="footer-category-link">innerwear</a>
-                    <a href="#" class="footer-category-link">hosiery</a>
-                </div>
-                <div class="footer-category-box">
-                    <h3 class="category-box-title">footwear :</h3>
-                    <a href="#" class="footer-category-link">sport</a>
-                    <a href="#" class="footer-category-link">formal</a>
-                    <a href="#" class="footer-category-link">Boots</a>
-                    <a href="#" class="footer-category-link">casual</a>
-                    <a href="#" class="footer-category-link">cowboy shoes</a>
-                    <a href="#" class="footer-category-link">safety shoes</a>
-                    <a href="#" class="footer-category-link">Party wear shoes</a>
-                    <a href="#" class="footer-category-link">Branded</a>
-                    <a href="#" class="footer-category-link">Firstcopy</a>
-                    <a href="#" class="footer-category-link">Long shoes</a>
-                </div>
-                <div class="footer-category-box">
-                    <h3 class="category-box-title">jewellery :</h3>
-                    <a href="#" class="footer-category-link">Necklace</a>
-                    <a href="#" class="footer-category-link">Earrings</a>
-                    <a href="#" class="footer-category-link">Couple rings</a>
-                    <a href="#" class="footer-category-link">Pendants</a>
-                    <a href="#" class="footer-category-link">Crystal</a>
-                    <a href="#" class="footer-category-link">Bangles</a>
-                    <a href="#" class="footer-category-link">bracelets</a>
-                    <a href="#" class="footer-category-link">nosepin</a>
-                    <a href="#" class="footer-category-link">chain</a>
-                    <a href="#" class="footer-category-link">Earrings</a>
-                    <a href="#" class="footer-category-link">Couple rings</a>
-                </div>
-                <div class="footer-category-box">
-                    <h3 class="category-box-title">cosmetics :</h3>
-                    <a href="#" class="footer-category-link">Shampoo</a>
-                    <a href="#" class="footer-category-link">Bodywash</a>
-                    <a href="#" class="footer-category-link">Facewash</a>
-                    <a href="#" class="footer-category-link">makeup kit</a>
-                    <a href="#" class="footer-category-link">liner</a>
-                    <a href="#" class="footer-category-link">lipstick</a>
-                    <a href="#" class="footer-category-link">prefume</a>
-                    <a href="#" class="footer-category-link">Body soap</a>
-                    <a href="#" class="footer-category-link">scrub</a>
-                    <a href="#" class="footer-category-link">hair gel</a>
-                    <a href="#" class="footer-category-link">hair colors</a>
-                    <a href="#" class="footer-category-link">hair dye</a>
-                    <a href="#" class="footer-category-link">sunscreen</a>
-                    <a href="#" class="footer-category-link">skin loson</a>
-                    <a href="#" class="footer-category-link">liner</a>
-                    <a href="#" class="footer-category-link">lipstick</a>
-                </div>
+                {% for brand in brand_directory_categories %}
+                    <div class="footer-category-box">
+                        <h3 class="category-box-title">{{ brand }}</h3>
+                        {% for children in brand.product.all %}
+                            <a href="{{ children.get_absolute_url }}"
+                               class="footer-category-link">{{ children.title }}</a>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
+
         <div class="footer-nav">
             <div class="container">
 
@@ -1177,14 +1132,14 @@
                     <li class="footer-nav-item">
                         <h2 class="nav-title">Contact</h2>
                     </li>
-
+                    {% for contact in contacts %}
                     <li class="footer-nav-item flex">
                         <div class="icon-box">
                             <ion-icon name="location-outline"></ion-icon>
                         </div>
 
                         <address class="content">
-                            {{ locate }}
+                            {{ contact.locate }}
                         </address>
                     </li>
 
@@ -1193,7 +1148,7 @@
                             <ion-icon name="call-outline"></ion-icon>
                         </div>
 
-                        <a href="tel:+{{ phone }}" class="footer-nav-link">{{ phone }}</a>
+                        <a href="tel:+{{ contact.phone }}" class="footer-nav-link">{{ contact.phone }}</a>
                     </li>
 
                     <li class="footer-nav-item flex">
@@ -1201,9 +1156,9 @@
                             <ion-icon name="mail-outline"></ion-icon>
                         </div>
 
-                        <a href="mailto:{{ email }}" class="footer-nav-link">{{ email }}</a>
+                        <a href="mailto:{{ contact.email }}" class="footer-nav-link">{{ contact.email }}</a>
                     </li>
-
+                    {% endfor %}
                 </ul>
 
                 <ul class="footer-nav-list">
@@ -1227,7 +1182,6 @@
                             {% endfor %}
                         </ul>
                     </li>
-
                 </ul>
 
             </div>

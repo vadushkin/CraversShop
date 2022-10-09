@@ -6,7 +6,7 @@ from shop.models import social_network, \
     category, product, product_of_the_day, \
     best_product, our_service, blog, comment, \
     banner, contact, our_company, popular_categories, \
-    testimonial, lower_banner
+    testimonial, lower_banner, brand_directory
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -363,6 +363,21 @@ class TestimonialAdmin(admin.ModelAdmin):
             return 'Фотографии нет'
 
 
+class BrandDirectoryCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'name',
+    )
+    list_display_links = ('id', 'name',)
+    search_fields = (
+        'name',
+    )
+    fields = (
+        'name',
+        'product',
+    )
+
+
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
 admin.site.register(product.Product, ProductAdmin)
@@ -377,3 +392,4 @@ admin.site.register(our_company.OurCompany, OurCompanyAdmin)
 admin.site.register(popular_categories.PopularCategory, PopularCategoryAdmin)
 admin.site.register(testimonial.Testimonial, TestimonialAdmin)
 admin.site.register(lower_banner.LowerBanner, LowerBannerAdmin)
+admin.site.register(brand_directory.BrandDirectoryCategory, BrandDirectoryCategoryAdmin)

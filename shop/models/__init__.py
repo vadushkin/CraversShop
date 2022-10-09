@@ -12,6 +12,7 @@ from shop.models.our_company import OurCompany
 from shop.models.popular_categories import PopularCategory
 from shop.models.testimonial import Testimonial
 from shop.models.lower_banner import LowerBanner
+from shop.models.brand_directory import BrandDirectoryCategory
 
 __all__ = (
     "Network",
@@ -28,4 +29,5 @@ __all__ = (
     "PopularCategory",
     "Testimonial",
     "LowerBanner",
+    "BrandDirectoryCategory",
 )

@@ -3,15 +3,16 @@ from django.views.generic import ListView, DetailView
 from shop.models import Banner, PopularCategory
 from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
+from shop.models.brand_directory import BrandDirectoryCategory
 from shop.models.category import Category
 from shop.models.contact import Contact
+from shop.models.lower_banner import LowerBanner
 from shop.models.our_company import OurCompany
 from shop.models.our_service import Service
 from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
 from shop.models.testimonial import Testimonial
-from shop.models.lower_banner import LowerBanner
 
 
 class ShopHome(ListView):
@@ -22,16 +23,13 @@ class ShopHome(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         # todo сделать кеш для большинства запросов
-        contacts = Contact.objects.last()
         context['title'] = 'Cravers'
-        if contacts:
-            context['phone'] = contacts.phone
-            context['email'] = contacts.email
-            context['locate'] = contacts.locate
+        context['contacts'] = Contact.objects.all()
         context['blogs'] = Blog.objects.select_related('category').select_related('author').order_by("-created_at")[:4]
         context['banners'] = Banner.objects.select_related('category')
         context['testimonial'] = Testimonial.objects.last()
         context['lower_banner'] = LowerBanner.objects.last()
+        context['brand_directory_categories'] = BrandDirectoryCategory.objects.all().prefetch_related('product')
         context['networks'] = Network.objects.all()[:5]
         context['popular_categories'] = PopularCategory.objects.select_related('category')[:5]
         context['company'] = OurCompany.objects.all()[:5]

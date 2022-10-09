@@ -1,0 +1,797 @@
+[
+ {
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+   "title": "Clothes",
+   "slug": "clothes",
+   "parent": null,
+   "photo": "categories/dress_HdEOq0C.svg",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 8,
+   "tree_id": 1,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+   "title": "FootWear",
+   "slug": "footwear",
+   "parent": null,
+   "photo": "categories/shoes_yyNIoIV.svg",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 6,
+   "tree_id": 6,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 3,
+  "fields": {
+   "title": "Men's",
+   "slug": "mens",
+   "parent": null,
+   "photo": "",
+   "is_menu_field": true,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 10,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 4,
+  "fields": {
+   "title": "Women's",
+   "slug": "womens",
+   "parent": null,
+   "photo": "",
+   "is_menu_field": true,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 14,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 5,
+  "fields": {
+   "title": "Jewerly",
+   "slug": "jewerly",
+   "parent": null,
+   "photo": "categories/jewelry_BDuf3DS.svg",
+   "is_menu_field": true,
+   "lft": 1,
+   "rght": 4,
+   "tree_id": 9,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 6,
+  "fields": {
+   "title": "Perfume",
+   "slug": "perfume",
+   "parent": null,
+   "photo": "categories/perfume_vJAlRNZ.svg",
+   "is_menu_field": true,
+   "lft": 1,
+   "rght": 8,
+   "tree_id": 11,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 7,
+  "fields": {
+   "title": "DRESS & FROCK",
+   "slug": "dress-frock",
+   "parent": 1,
+   "photo": "categories/dress_HHrsEWw.svg",
+   "is_menu_field": false,
+   "lft": 2,
+   "rght": 3,
+   "tree_id": 1,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 8,
+  "fields": {
+   "title": "WINTER WEAR",
+   "slug": "winter-wear",
+   "parent": 1,
+   "photo": "categories/coat_GTNxAy5.svg",
+   "is_menu_field": false,
+   "lft": 6,
+   "rght": 7,
+   "tree_id": 1,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 9,
+  "fields": {
+   "title": "Glasses",
+   "slug": "glasses",
+   "parent": null,
+   "photo": "categories/glasses_YhyAXK4.svg",
+   "is_menu_field": true,
+   "lft": 1,
+   "rght": 4,
+   "tree_id": 7,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 10,
+  "fields": {
+   "title": "GLASSES & LENS",
+   "slug": "glasses-lens",
+   "parent": 9,
+   "photo": "categories/glasses_cHrGaQD.svg",
+   "is_menu_field": false,
+   "lft": 2,
+   "rght": 3,
+   "tree_id": 7,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 11,
+  "fields": {
+   "title": "SHORTS & JEANS",
+   "slug": "shorts-jeans",
+   "parent": 1,
+   "photo": "categories/shorts_dsA23e1.svg",
+   "is_menu_field": false,
+   "lft": 4,
+   "rght": 5,
+   "tree_id": 1,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 12,
+  "fields": {
+   "title": "Earrings",
+   "slug": "earrings",
+   "parent": 5,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 2,
+   "rght": 3,
+   "tree_id": 9,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 13,
+  "fields": {
+   "title": "Clothes Perfume",
+   "slug": "clothes-perfume",
+   "parent": 6,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 2,
+   "rght": 3,
+   "tree_id": 11,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 14,
+  "fields": {
+   "title": "Deodorant",
+   "slug": "deodorant",
+   "parent": 6,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 4,
+   "rght": 5,
+   "tree_id": 11,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 15,
+  "fields": {
+   "title": "Jacket",
+   "slug": "jacket",
+   "parent": null,
+   "photo": "categories/jacket_Zexm6lG.svg",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 8,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 16,
+  "fields": {
+   "title": "Casual",
+   "slug": "casual",
+   "parent": 2,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 2,
+   "rght": 3,
+   "tree_id": 6,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 17,
+  "fields": {
+   "title": "Watches",
+   "slug": "watches",
+   "parent": null,
+   "photo": "categories/watch_xwMfoGH.svg",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 13,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 18,
+  "fields": {
+   "title": "Sports",
+   "slug": "sports",
+   "parent": 2,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 4,
+   "rght": 5,
+   "tree_id": 6,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 19,
+  "fields": {
+   "title": "Fashion",
+   "slug": "fashion",
+   "parent": null,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 5,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 20,
+  "fields": {
+   "title": "Shoes",
+   "slug": "shoes",
+   "parent": null,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 12,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 22,
+  "fields": {
+   "title": "Electronics",
+   "slug": "electronics",
+   "parent": null,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 1,
+   "rght": 2,
+   "tree_id": 4,
+   "level": 0
+  }
+ },
+ {
+  "model": "shop.category",
+  "pk": 23,
+  "fields": {
+   "title": "lower Fragrance",
+   "slug": "lower-fragrance",
+   "parent": 6,
+   "photo": "",
+   "is_menu_field": false,
+   "lft": 6,
+   "rght": 7,
+   "tree_id": 11,
+   "level": 1
+  }
+ },
+ {
+  "model": "shop.banner",
+  "pk": 1,
+  "fields": {
+   "title": "MODERN SUNGLASSES",
+   "category": 9,
+   "price_from": 15,
+   "photo": "banners/banner-2_MOF1jjC.jpg"
+  }
+ },
+ {
+  "model": "shop.banner",
+  "pk": 2,
+  "fields": {
+   "title": "NEW FASHION SUMMER SALE",
+   "category": 19,
+   "price_from": 30,
+   "photo": "banners/banner-3_JkYM4jh.jpg"
+  }
+ },
+ {
+  "model": "shop.banner",
+  "pk": 3,
+  "fields": {
+   "title": "WOMEN'S LATEST FASHION SALE",
+   "category": 4,
+   "price_from": 20,
+   "photo": "banners/banner-1_oVk2ByN.jpg"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+   "title": "Jacket",
+   "slug": "jacket",
+   "description": "Mens Winter LeathersJackets",
+   "category": 1,
+   "photo": "products/jacket-3.jpg",
+   "photo_back": "products/jacket-4.jpg",
+   "price": 75,
+   "sale": 25,
+   "stars": "4",
+   "is_on_closeout": true,
+   "updated_at": "2022-10-05T15:02:03.913Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+   "title": "Baby Fabric Shoes",
+   "slug": "baby-fabric-shoes",
+   "description": "Cool",
+   "category": 2,
+   "photo": "products/1.jpg",
+   "photo_back": "",
+   "price": 50,
+   "sale": 0,
+   "stars": "5",
+   "is_on_closeout": true,
+   "updated_at": "2022-10-05T14:01:12.701Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+   "title": "MEN Yarn Fleece Full-Zip Jacket",
+   "slug": "men-yarn-fleece-full-zip-jacket",
+   "description": "cooler",
+   "category": 15,
+   "photo": "products/jacket-5.jpg",
+   "photo_back": "products/jacket-6.jpg",
+   "price": 160,
+   "sale": 10,
+   "stars": "3",
+   "is_on_closeout": false,
+   "updated_at": "2022-10-05T14:01:12.701Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+   "title": "Casual Men's Brown Shoes",
+   "slug": "casual-mens-brown-shoes",
+   "description": "cool shoes",
+   "category": 16,
+   "photo": "products/shoe-2.jpg",
+   "photo_back": "products/shoe-2_1.jpg",
+   "price": 80,
+   "sale": 20,
+   "stars": "4",
+   "is_on_closeout": false,
+   "updated_at": "2022-10-05T15:02:14.094Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+   "title": "Smart Watche Vital Plus",
+   "slug": "smart-watche-vital-plus",
+   "description": "cooler that cool",
+   "category": 17,
+   "photo": "products/watch-1.jpg",
+   "photo_back": "products/watch-2.jpg",
+   "price": 200,
+   "sale": 0,
+   "stars": "4",
+   "is_on_closeout": false,
+   "updated_at": "2022-10-05T14:04:48.290Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+   "title": "Men's Leather Formal Wear Shoes",
+   "slug": "mens-leather-formal-wear-shoes",
+   "description": "cooler than cooler",
+   "category": 18,
+   "photo": "products/sports-2.jpg",
+   "photo_back": "products/sports-4.jpg",
+   "price": 70,
+   "sale": 5,
+   "stars": "2",
+   "is_on_closeout": false,
+   "updated_at": "2022-10-05T14:55:57.836Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.product",
+  "pk": 7,
+  "fields": {
+   "title": "Titan 100 Ml Womens Perfume",
+   "slug": "titan-100-ml-womens-perfume",
+   "description": "cooler than cooler with cool",
+   "category": 6,
+   "photo": "products/perfume.jpg",
+   "photo_back": "",
+   "price": 600,
+   "sale": 40,
+   "stars": "5",
+   "is_on_closeout": false,
+   "updated_at": "2022-10-05T15:01:56.389Z",
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.bestproduct",
+  "pk": 1,
+  "fields": {
+   "product": 7,
+   "created_at": "2022-10-06"
+  }
+ },
+ {
+  "model": "shop.bestproduct",
+  "pk": 2,
+  "fields": {
+   "product": 1,
+   "created_at": "2022-10-06"
+  }
+ },
+ {
+  "model": "shop.bestproduct",
+  "pk": 3,
+  "fields": {
+   "product": 2,
+   "created_at": "2022-10-06"
+  }
+ },
+ {
+  "model": "shop.bestproduct",
+  "pk": 4,
+  "fields": {
+   "product": 5,
+   "created_at": "2022-10-06"
+  }
+ },
+ {
+  "model": "shop.blog",
+  "pk": 1,
+  "fields": {
+   "title": "Clothes Retail KPIs 2021 Guide for Clothes Executives.",
+   "slug": "clothes-retail-kpis-2021-guide-for-clothes-executi",
+   "text": "coolerthan the cooler without cool",
+   "author": 1,
+   "category": 19,
+   "photo": "our_services/blog-1.jpg",
+   "stars": "5",
+   "likes": 0,
+   "updated_at": "2022-10-07T15:26:59.841Z",
+   "created_at": "2022-10-07"
+  }
+ },
+ {
+  "model": "shop.blog",
+  "pk": 2,
+  "fields": {
+   "title": "Curbside fashion Trends: How to Win the Pickup Battle.",
+   "slug": "curbside-fashion-trends-how-to-win-the-pickup-batt",
+   "text": "the cooler",
+   "author": 1,
+   "category": 1,
+   "photo": "our_services/blog-2.jpg",
+   "stars": "4",
+   "likes": 0,
+   "updated_at": "2022-10-07T15:28:11.932Z",
+   "created_at": "2022-10-07"
+  }
+ },
+ {
+  "model": "shop.blog",
+  "pk": 3,
+  "fields": {
+   "title": "EBT vendors: Claim Your Share of SNAP Online Revenue.",
+   "slug": "ebt-vendors-claim-your-share-of-snap-online-revenu",
+   "text": "cooler than the cool cooler",
+   "author": 1,
+   "category": 20,
+   "photo": "our_services/blog-3.jpg",
+   "stars": "5",
+   "likes": 0,
+   "updated_at": "2022-10-07T15:29:04.874Z",
+   "created_at": "2022-10-07"
+  }
+ },
+ {
+  "model": "shop.blog",
+  "pk": 4,
+  "fields": {
+   "title": "Curbside fashion Trends: How to Win the Pickup Battle.",
+   "slug": "curbside-fashion-trends-how-to-win-the-pickup-batt",
+   "text": "the cool cooler",
+   "author": 1,
+   "category": 22,
+   "photo": "our_services/blog-4.jpg",
+   "stars": "1",
+   "likes": 0,
+   "updated_at": "2022-10-07T15:30:04.108Z",
+   "created_at": "2022-10-07"
+  }
+ },
+ {
+  "model": "shop.contact",
+  "pk": 1,
+  "fields": {
+   "locate": "419 State 414 Rte Beaver Dams, New York(NY), 14812, USA",
+   "phone": "(607) 936-8058",
+   "email": "Example@Gmail.Com"
+  }
+ },
+ {
+  "model": "shop.service",
+  "pk": 1,
+  "fields": {
+   "title": "Worldwide Delivery",
+   "description": "For Order Over $100",
+   "url": "https://www.worldwidedelivery.net/",
+   "photo": "our_services/ocr.jfif"
+  }
+ },
+ {
+  "model": "shop.service",
+  "pk": 2,
+  "fields": {
+   "title": "Next Day Delivery",
+   "description": "UK Orders Only",
+   "url": "https://www.countrycollection.co.uk/information",
+   "photo": "our_services/ocr_1.jfif"
+  }
+ },
+ {
+  "model": "shop.service",
+  "pk": 3,
+  "fields": {
+   "title": "Best Online Support",
+   "description": "Hours: 8AM - 11PM",
+   "url": "https://phonesites.com/",
+   "photo": "our_services/ocr_2.jfif"
+  }
+ },
+ {
+  "model": "shop.service",
+  "pk": 4,
+  "fields": {
+   "title": "Return Policy",
+   "description": "Easy & Free Return",
+   "url": "https://www.google.ru/search?q=Pac-Man",
+   "photo": "our_services/ocr_3.jfif"
+  }
+ },
+ {
+  "model": "shop.service",
+  "pk": 5,
+  "fields": {
+   "title": "30% Money Back",
+   "description": "For Order Over $100",
+   "url": "https://сапёр.com/",
+   "photo": "our_services/ocr_4.jfif"
+  }
+ },
+ {
+  "model": "shop.productoftheday",
+  "pk": 1,
+  "fields": {
+   "quantity": 60,
+   "sold": 20,
+   "open": false,
+   "product": 1,
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.productoftheday",
+  "pk": 2,
+  "fields": {
+   "quantity": 60,
+   "sold": 50,
+   "open": true,
+   "product": 5,
+   "created_at": "2022-10-05"
+  }
+ },
+ {
+  "model": "shop.network",
+  "pk": 1,
+  "fields": {
+   "name": "YouTube",
+   "url": "https://www.youtube.com/",
+   "photo": "social_networks/YOUTUBE_icon-icons.com_65537.png"
+  }
+ },
+ {
+  "model": "shop.network",
+  "pk": 2,
+  "fields": {
+   "name": "LinkedIN",
+   "url": "https://linkedin.com/",
+   "photo": "social_networks/LINKEDIN_icon-icons.com_65538.png"
+  }
+ },
+ {
+  "model": "shop.network",
+  "pk": 3,
+  "fields": {
+   "name": "FaceBook",
+   "url": "https://www.facebook.com/",
+   "photo": "social_networks/FB_icon-icons.com_65534.png"
+  }
+ },
+ {
+  "model": "shop.network",
+  "pk": 4,
+  "fields": {
+   "name": "GitHub",
+   "url": "https://github.com/vadushkin",
+   "photo": "social_networks/GITHUB_icon-icons.com_65553.png"
+  }
+ },
+ {
+  "model": "shop.ourcompany",
+  "pk": 1,
+  "fields": {
+   "title": "Delivery",
+   "url": "https://www.delivery-club.ru/"
+  }
+ },
+ {
+  "model": "shop.ourcompany",
+  "pk": 2,
+  "fields": {
+   "title": "Legal Notice",
+   "url": "https://habr.com/ru/all/"
+  }
+ },
+ {
+  "model": "shop.ourcompany",
+  "pk": 3,
+  "fields": {
+   "title": "Terms And Conditions",
+   "url": "https://codewithsadee.github.io/anon-ecommerce-website/"
+  }
+ },
+ {
+  "model": "shop.ourcompany",
+  "pk": 4,
+  "fields": {
+   "title": "About Us",
+   "url": "https://stripe.com/"
+  }
+ },
+ {
+  "model": "shop.ourcompany",
+  "pk": 5,
+  "fields": {
+   "title": "Secure Payment",
+   "url": "http://gmail.com/"
+  }
+ },
+ {
+  "model": "shop.popularcategory",
+  "pk": 1,
+  "fields": {
+   "category": 1
+  }
+ },
+ {
+  "model": "shop.popularcategory",
+  "pk": 2,
+  "fields": {
+   "category": 19
+  }
+ },
+ {
+  "model": "shop.popularcategory",
+  "pk": 3,
+  "fields": {
+   "category": 9
+  }
+ },
+ {
+  "model": "shop.popularcategory",
+  "pk": 4,
+  "fields": {
+   "category": 6
+  }
+ },
+ {
+  "model": "shop.popularcategory",
+  "pk": 5,
+  "fields": {
+   "category": 20
+  }
+ },
+ {
+  "model": "shop.testimonial",
+  "pk": 1,
+  "fields": {
+   "name": "Alan Doe",
+   "position": "CEO & Founder Invision",
+   "photo": "our_services/testimonial-1_4oiNI6c.jpg",
+   "description": "Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor sit amet."
+  }
+ },
+ {
+  "model": "shop.lowerbanner",
+  "pk": 1,
+  "fields": {
+   "title": "Summer Collection",
+   "category": 1,
+   "sale": 0,
+   "price_from": 10,
+   "photo": "lower_banner/cta-banner.jpg"
+  }
+ }
+]
