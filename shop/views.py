@@ -1,3 +1,4 @@
+from django.db import models
 from django.views.generic import ListView, DetailView
 
 from shop.models import Banner, PopularCategory
@@ -13,6 +14,16 @@ from shop.models.product import Product
 from shop.models.product_of_the_day import ProductOfTheDay
 from shop.models.social_network import Network
 from shop.models.testimonial import Testimonial
+
+
+def get_mptt_prefetch(field_name, lookup_name='__parent', related_model_qs=None):
+    max_level = related_model_qs.values('level').aggregate(max_level=models.Max('level'))['max_level']
+    prefetch_list = []
+    prefetch_string = field_name
+    for i in range(max_level):
+        prefetch_string += lookup_name
+        prefetch_list.append(prefetch_string)
+    return prefetch_list
 
 
 class ShopHome(ListView):
@@ -42,6 +53,9 @@ class ShopHome(ListView):
         context['product_of_the_day'] = (
             ProductOfTheDay.objects.filter(open=True).select_related('product').order_by("-created_at").last())
         return context
+
+    def get_queryset(self):
+        return Category.objects.all().prefetch_related('children')
 
 
 class CategoryListView(ListView):
