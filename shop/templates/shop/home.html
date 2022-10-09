@@ -4,79 +4,79 @@
 {% block title %}
     {{ title }}
 {% endblock title %}
-
-{% block modal %}
-    <div class="modal" data-modal>
-
-        <div class="modal-close-overlay" data-modal-overlay></div>
-
-        <div class="modal-content">
-
-            <button class="modal-close-btn" data-modal-close>
-                <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="newsletter-img">
-                <img src="{% static 'images/newsletter.png' %}" alt="subscribe newsletter" width="400" height="400">
-            </div>
-
-            <div class="newsletter">
-
-                <form action="#">
-
-                    <div class="newsletter-header">
-
-                        <h3 class="newsletter-title">Subscribe Newsletter.</h3>
-
-                        <p class="newsletter-desc">
-                            Subscribe the <b>Cravers</b> to get latest products and discount update.
-                        </p>
-
-                    </div>
-
-                    <input type="email" name="email" class="email-field" placeholder="Email Address" required>
-
-                    <button type="submit" class="btn-newsletter">Subscribe</button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-{% endblock modal %}
-
-{% block notification_toast %}
-    <div class="notification-toast" data-toast>
-
-        <button class="toast-close-btn" data-toast-close>
-            <ion-icon name="close-outline"></ion-icon>
-        </button>
-
-        <div class="toast-banner">
-            <img src="{% static 'images/products/jewellery-1.jpg' %}" alt="Rose Gold Earrings" width="80" height="70">
-        </div>
-
-        <div class="toast-detail">
-
-            <p class="toast-message">
-                Someone in new just bought
-            </p>
-
-            <p class="toast-title">
-                Rose Gold Earrings
-            </p>
-
-            <p class="toast-meta">
-                <time datetime="PT2M">2 Minutes</time>
-                ago
-            </p>
-
-        </div>
-
-    </div>
-{% endblock notification_toast %}
+{##}
+{#{% block modal %}#}
+{#    <div class="modal" data-modal>#}
+{##}
+{#        <div class="modal-close-overlay" data-modal-overlay></div>#}
+{##}
+{#        <div class="modal-content">#}
+{##}
+{#            <button class="modal-close-btn" data-modal-close>#}
+{#                <ion-icon name="close-outline"></ion-icon>#}
+{#            </button>#}
+{##}
+{#            <div class="newsletter-img">#}
+{#                <img src="{% static 'images/newsletter.png' %}" alt="subscribe newsletter" width="400" height="400">#}
+{#            </div>#}
+{##}
+{#            <div class="newsletter">#}
+{##}
+{#                <form action="#">#}
+{##}
+{#                    <div class="newsletter-header">#}
+{##}
+{#                        <h3 class="newsletter-title">Subscribe Newsletter.</h3>#}
+{##}
+{#                        <p class="newsletter-desc">#}
+{#                            Subscribe the <b>Cravers</b> to get latest products and discount update.#}
+{#                        </p>#}
+{##}
+{#                    </div>#}
+{##}
+{#                    <input type="email" name="email" class="email-field" placeholder="Email Address" required>#}
+{##}
+{#                    <button type="submit" class="btn-newsletter">Subscribe</button>#}
+{##}
+{#                </form>#}
+{##}
+{#            </div>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+{#{% endblock modal %}#}
+{##}
+{#{% block notification_toast %}#}
+{#    <div class="notification-toast" data-toast>#}
+{##}
+{#        <button class="toast-close-btn" data-toast-close>#}
+{#            <ion-icon name="close-outline"></ion-icon>#}
+{#        </button>#}
+{##}
+{#        <div class="toast-banner">#}
+{#            <img src="{% static 'images/products/jewellery-1.jpg' %}" alt="Rose Gold Earrings" width="80" height="70">#}
+{#        </div>#}
+{##}
+{#        <div class="toast-detail">#}
+{##}
+{#            <p class="toast-message">#}
+{#                Someone in new just bought#}
+{#            </p>#}
+{##}
+{#            <p class="toast-title">#}
+{#                Rose Gold Earrings#}
+{#            </p>#}
+{##}
+{#            <p class="toast-meta">#}
+{#                <time datetime="PT2M">2 Minutes</time>#}
+{#                ago#}
+{#            </p>#}
+{##}
+{#        </div>#}
+{##}
+{#    </div>#}
+{#{% endblock notification_toast %}#}
 
 {% block header %}
     <header>
@@ -173,8 +173,12 @@
                     <li class="menu-category">
                         <a href="/" class="menu-title">Home</a>
                     </li>
+                    <li class="menu-category">
+                        <a href="blogs/" class="menu-title">BLOG</a>
+                    </li>
 
                     {% recursetree categories %}
+
                         {% if node.is_menu_field %}
                             <li class="menu-category">
                                 <a href="{{ node.get_absolute_url }}" class="menu-title">{{ node.title }}</a>
@@ -191,9 +195,6 @@
                         {% endif %}
                     {% endrecursetree %}
 
-                    <li class="menu-category">
-                        <a href="blogs/" class="menu-title">BLOG</a>
-                    </li>
                     <li class="menu-category">
                         <a href="hot-offers/" class="menu-title">HOT OFFERS</a>
                     </li>
