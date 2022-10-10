@@ -1,20 +1,10 @@
-from django.db import models
 from django.views.generic import ListView, DetailView
 
 from shop.models.blog import Blog
 from shop.models.category import Category
 from shop.models.product import Product
 from shop.queries import products, categories, services_for_site, banners, blogs
-
-
-def get_mptt_prefetch(field_name, lookup_name='__parent', related_model_qs=None):
-    max_level = related_model_qs.values('level').aggregate(max_level=models.Max('level'))['max_level']
-    prefetch_list = []
-    prefetch_string = field_name
-    for i in range(max_level):
-        prefetch_string += lookup_name
-        prefetch_list.append(prefetch_string)
-    return prefetch_list
+from shop.services import give_dict_with_base_queries
 
 
 class ShopHome(ListView):
@@ -29,24 +19,15 @@ class ShopHome(ListView):
         # title
         context['title'] = 'Cravers'
 
+        # added base queries
+        give_dict_with_base_queries(context)
+
         # blogs
         context['blogs'] = blogs.give_blogs()
 
         # banners
         context['banners'] = banners.give_banners()
         context['lower_banner'] = banners.give_lower_banner()
-
-        # categories
-        context['brand_directory_categories'] = categories.give_brand_directory_category()
-        context['popular_categories'] = categories.give_popular_category()
-
-        # services for site
-        context['networks'] = services_for_site.give_networks()
-        context['company'] = services_for_site.give_our_companies()
-        context['our_services'] = services_for_site.give_services()
-        context['testimonial'] = services_for_site.give_testimonials()
-        context['contacts'] = services_for_site.give_contacts()
-        context['logo'] = services_for_site.give_logo()
 
         # products
         context['best_product'] = products.give_best_products()
@@ -69,20 +50,8 @@ class ProductsByCategoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['title'] = self.kwargs["slug"].title()
-
-        # todo повторюшки
-
-        context['brand_directory_categories'] = categories.give_brand_directory_category()
-        context['categories'] = categories.give_category()
-        context['company'] = services_for_site.give_our_companies()
-        context['our_services'] = services_for_site.give_services()
-        context['contacts'] = services_for_site.give_contacts()
-        context['popular_categories'] = categories.give_popular_category()
-        context['networks'] = services_for_site.give_networks()
-        context['logo'] = services_for_site.give_logo()
-
+        give_dict_with_base_queries(context)
         return context
 
     def get_queryset(self):
@@ -96,18 +65,8 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['title'] = self.kwargs["slug"].title()
-
-        context['categories'] = categories.give_category()
-        context['company'] = services_for_site.give_our_companies()
-        context['our_services'] = services_for_site.give_services()
-        context['popular_categories'] = categories.give_popular_category()
-        context['brand_directory_categories'] = categories.give_brand_directory_category()
-        context['networks'] = services_for_site.give_networks()
-        context['contacts'] = services_for_site.give_contacts()
-        context['logo'] = services_for_site.give_logo()
-
+        give_dict_with_base_queries(context)
         return context
 
     def get_queryset(self):
@@ -121,18 +80,8 @@ class BlogDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['title'] = self.kwargs["slug"].title()
-
-        context['company'] = services_for_site.give_our_companies()
-        context['our_services'] = services_for_site.give_services()
-        context['brand_directory_categories'] = categories.give_brand_directory_category()
-        context['networks'] = services_for_site.give_networks()
-        context['categories'] = categories.give_category()
-        context['contacts'] = services_for_site.give_contacts()
-        context['popular_categories'] = categories.give_popular_category()
-        context['logo'] = services_for_site.give_logo()
-
+        give_dict_with_base_queries(context)
         return context
 
     def get_queryset(self):
