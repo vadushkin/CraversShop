@@ -6,7 +6,7 @@ from shop.models import social_network, \
     category, product, product_of_the_day, \
     best_product, our_service, blog, comment, \
     banner, contact, our_company, popular_categories, \
-    testimonial, lower_banner, brand_directory
+    testimonial, lower_banner, brand_directory, logo
 
 
 class SocialNetworkAdmin(admin.ModelAdmin):
@@ -377,6 +377,23 @@ class BrandDirectoryCategoryAdmin(admin.ModelAdmin):
         'product',
     )
 
+class LogoPhotoAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'get_photo',
+    )
+    list_display_links = ('id',)
+    fields = (
+        'photo',
+    )
+
+    @staticmethod
+    def get_photo(obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="100">')
+        else:
+            return 'Фотографии нет'
+
 
 admin.site.register(social_network.Network, SocialNetworkAdmin)
 admin.site.register(category.Category, CategoryAdmin)
@@ -393,3 +410,4 @@ admin.site.register(popular_categories.PopularCategory, PopularCategoryAdmin)
 admin.site.register(testimonial.Testimonial, TestimonialAdmin)
 admin.site.register(lower_banner.LowerBanner, LowerBannerAdmin)
 admin.site.register(brand_directory.BrandDirectoryCategory, BrandDirectoryCategoryAdmin)
+admin.site.register(logo.Logo, LogoPhotoAdmin)

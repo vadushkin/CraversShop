@@ -7,6 +7,7 @@ from shop.models.blog import Blog
 from shop.models.brand_directory import BrandDirectoryCategory
 from shop.models.category import Category
 from shop.models.contact import Contact
+from shop.models.logo import Logo
 from shop.models.lower_banner import LowerBanner
 from shop.models.our_company import OurCompany
 from shop.models.our_service import Service
@@ -36,6 +37,7 @@ class ShopHome(ListView):
         # todo сделать кеш для большинства запросов
         context['title'] = 'Cravers'
         context['contacts'] = Contact.objects.all()
+        context['logo'] = Logo.objects.last()
         context['blogs'] = Blog.objects.select_related('category').select_related('author').order_by("-created_at")[:4]
         context['banners'] = Banner.objects.select_related('category')
         context['testimonial'] = Testimonial.objects.last()
