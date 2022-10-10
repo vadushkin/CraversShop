@@ -20,6 +20,7 @@ def give_dict_with_base_queries(context: dict) -> dict | None:
     context['our_services'] = services_for_site.give_services()
     context['contacts'] = services_for_site.give_contacts()
     context['networks'] = services_for_site.give_networks()
+    context['testimonial'] = services_for_site.give_testimonials()
     context['logo'] = services_for_site.give_logo()
 
     return context

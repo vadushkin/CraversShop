@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView
 from shop.models.blog import Blog
 from shop.models.category import Category
 from shop.models.product import Product
-from shop.queries import products, categories, services_for_site, banners, blogs
+from shop.queries import products, categories, banners, blogs
 from shop.services import give_dict_with_base_queries
 
 
