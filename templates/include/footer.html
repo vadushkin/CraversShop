@@ -1,0 +1,134 @@
+<footer>
+    <div class="footer-category">
+        <div class="container">
+            <h2 class="footer-category-title">Brand directory</h2>
+            {% for brand in brand_directory_categories %}
+                <div class="footer-category-box">
+                    <h3 class="category-box-title">{{ brand }}</h3>
+                    {% for children in brand.product.all %}
+                        <a href="{{ children.get_absolute_url }}"
+                           class="footer-category-link">{{ children.title }}</a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <div class="container">
+
+            <ul class="footer-nav-list">
+                <li class="footer-nav-item">
+                    <h2 class="nav-title">Popular Categories</h2>
+                </li>
+                {% for popular_category in popular_categories %}
+                    <li class="footer-nav-item">
+                        <a href="{{ popular_category.category.get_absolute_url }}"
+                           class="footer-nav-link">{{ popular_category.category.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <ul class="footer-nav-list">
+
+                <li class="footer-nav-item">
+                    <h2 class="nav-title">Our Company</h2>
+                </li>
+                {% for service in company %}
+                    <li class="footer-nav-item">
+                        <a href="{{ service.url }}"
+                           class="footer-nav-link"
+                           target="_blank">{{ service.title }}</a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+
+            <ul class="footer-nav-list">
+
+                <li class="footer-nav-item">
+                    <h2 class="nav-title">Services</h2>
+                </li>
+                {% for service in our_services %}
+                    <li class="footer-nav-item">
+                        <a href="{{ service.url }}"
+                           class="footer-nav-link"
+                           target="_blank">{{ service.title }}</a>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+            <ul class="footer-nav-list">
+
+                <li class="footer-nav-item">
+                    <h2 class="nav-title">Contact</h2>
+                </li>
+                {% for contact in contacts %}
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+
+                        <address class="content">
+                            {{ contact.locate }}
+                        </address>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </div>
+
+                        <a href="tel:+{{ contact.phone }}" class="footer-nav-link">{{ contact.phone }}</a>
+                    </li>
+
+                    <li class="footer-nav-item flex">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+
+                        <a href="mailto:{{ contact.email }}" class="footer-nav-link">{{ contact.email }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <ul class="footer-nav-list">
+
+                <li class="footer-nav-item">
+                    <h2 class="nav-title">Follow Us</h2>
+                </li>
+
+                <li>
+                    <ul class="social-link">
+                        {% for network in networks %}
+                            <li class="footer-nav-item">
+                                <a href="{{ network.url }}"
+                                   class="footer-nav-link">
+                                    <img src="{{ network.photo.url }}"
+                                         alt="{{ network.name }}"
+                                         width="18"
+                                         height="18">
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p class="copyright">
+                Copyright &copy; <a href="/">Cravers</a> all rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>

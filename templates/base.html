@@ -18,18 +18,22 @@
 <body>
 
 {% block modal %}
+    {% include 'include/advertisement.html' %}
 {% endblock modal %}
 
 {% block notification_toast %}
+    {% include 'include/notification_toast.html' %}
 {% endblock notification_toast %}
 
 {% block header %}
+    {% include 'include/header.html' %}
 {% endblock header %}
 
 {% block content %}
 {% endblock content %}
 
 {% block footer %}
+    {% include 'include/footer.html' %}
 {% endblock footer %}
 
 <script src="{% static 'js/style.js' %}"></script>
