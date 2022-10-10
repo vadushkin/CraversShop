@@ -1,20 +1,10 @@
 from django.db import models
 from django.views.generic import ListView, DetailView
 
-from shop.models import Banner, PopularCategory
-from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
-from shop.models.brand_directory import BrandDirectoryCategory
 from shop.models.category import Category
-from shop.models.contact import Contact
-from shop.models.logo import Logo
-from shop.models.lower_banner import LowerBanner
-from shop.models.our_company import OurCompany
-from shop.models.our_service import Service
 from shop.models.product import Product
-from shop.models.product_of_the_day import ProductOfTheDay
-from shop.models.social_network import Network
-from shop.models.testimonial import Testimonial
+from shop.queries import products, categories, services_for_site, banners, blogs
 
 
 def get_mptt_prefetch(field_name, lookup_name='__parent', related_model_qs=None):
@@ -35,29 +25,41 @@ class ShopHome(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         # todo сделать кеш для большинства запросов
+
+        # title
         context['title'] = 'Cravers'
-        context['contacts'] = Contact.objects.all()
-        context['logo'] = Logo.objects.last()
-        context['blogs'] = Blog.objects.select_related('category').select_related('author').order_by("-created_at")[:4]
-        context['banners'] = Banner.objects.select_related('category')
-        context['testimonial'] = Testimonial.objects.last()
-        context['lower_banner'] = LowerBanner.objects.last()
-        context['brand_directory_categories'] = BrandDirectoryCategory.objects.all().prefetch_related('product')
-        context['networks'] = Network.objects.all()[:5]
-        context['popular_categories'] = PopularCategory.objects.select_related('category')[:5]
-        context['company'] = OurCompany.objects.all()[:5]
-        context['our_services'] = Service.objects.all()[:5]
-        context['best_product'] = BestProduct.objects.all().select_related('product')
-        context['last_products'] = Product.objects.select_related('category').order_by("-created_at")[:12]
-        context['new_products'] = Product.objects.select_related('category').order_by("-updated_at")[:4]
-        context['top_rated_products'] = Product.objects.select_related('category').order_by("-stars")[:4]
-        context['most_expensive_products'] = Product.objects.select_related('category').order_by("-price")[:4]
-        context['product_of_the_day'] = (
-            ProductOfTheDay.objects.filter(open=True).select_related('product').order_by("-created_at").last())
+
+        # blogs
+        context['blogs'] = blogs.give_blogs()
+
+        # banners
+        context['banners'] = banners.give_banners()
+        context['lower_banner'] = banners.give_lower_banner()
+
+        # categories
+        context['brand_directory_categories'] = categories.give_brand_directory_category()
+        context['popular_categories'] = categories.give_popular_category()
+
+        # services for site
+        context['networks'] = services_for_site.give_networks()
+        context['company'] = services_for_site.give_our_companies()
+        context['our_services'] = services_for_site.give_services()
+        context['testimonial'] = services_for_site.give_testimonials()
+        context['contacts'] = services_for_site.give_contacts()
+        context['logo'] = services_for_site.give_logo()
+
+        # products
+        context['best_product'] = products.give_best_products()
+        context['last_products'] = products.give_products_order_by_created_at()
+        context['new_products'] = products.give_products_order_by_updated_at()
+        context['top_rated_products'] = products.give_products_order_by_stars()
+        context['most_expensive_products'] = products.give_products_order_by_price()
+        context['product_of_the_day'] = products.give_product_of_the_day()
+
         return context
 
     def get_queryset(self):
-        return Category.objects.all().prefetch_related('children')
+        return categories.give_category()
 
 
 class ProductsByCategoryListView(ListView):
@@ -67,7 +69,20 @@ class ProductsByCategoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['title'] = self.kwargs["slug"].title()
+
+        # todo повторюшки
+
+        context['brand_directory_categories'] = categories.give_brand_directory_category()
+        context['categories'] = categories.give_category()
+        context['company'] = services_for_site.give_our_companies()
+        context['our_services'] = services_for_site.give_services()
+        context['contacts'] = services_for_site.give_contacts()
+        context['popular_categories'] = categories.give_popular_category()
+        context['networks'] = services_for_site.give_networks()
+        context['logo'] = services_for_site.give_logo()
+
         return context
 
     def get_queryset(self):
@@ -81,7 +96,18 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['title'] = self.kwargs["slug"].title()
+
+        context['categories'] = categories.give_category()
+        context['company'] = services_for_site.give_our_companies()
+        context['our_services'] = services_for_site.give_services()
+        context['popular_categories'] = categories.give_popular_category()
+        context['brand_directory_categories'] = categories.give_brand_directory_category()
+        context['networks'] = services_for_site.give_networks()
+        context['contacts'] = services_for_site.give_contacts()
+        context['logo'] = services_for_site.give_logo()
+
         return context
 
     def get_queryset(self):
@@ -95,7 +121,18 @@ class BlogDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['title'] = self.kwargs["slug"].title()
+
+        context['company'] = services_for_site.give_our_companies()
+        context['our_services'] = services_for_site.give_services()
+        context['brand_directory_categories'] = categories.give_brand_directory_category()
+        context['networks'] = services_for_site.give_networks()
+        context['categories'] = categories.give_category()
+        context['contacts'] = services_for_site.give_contacts()
+        context['popular_categories'] = categories.give_popular_category()
+        context['logo'] = services_for_site.give_logo()
+
         return context
 
     def get_queryset(self):

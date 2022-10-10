@@ -88,11 +88,13 @@
         <div class="container">
 
             <ul class="desktop-menu-category-list">
+
                 <li class="menu-category">
-                    <a href="/" class="menu-title">Home</a>
+                    <a href="{% url 'home' %}" class="menu-title">Home</a>
                 </li>
+
                 <li class="menu-category">
-                    <a href="blogs/" class="menu-title">Blog</a>
+                    <a href="{% url 'blogs' %}" class="menu-title">Blogs</a>
                 </li>
 
                 {% recursetree categories %}
@@ -114,7 +116,7 @@
                 {% endrecursetree %}
 
                 <li class="menu-category">
-                    <a href="hot-offers/" class="menu-title">Hot Offers</a>
+                    <a href="{% url 'hot-offers' %}" class="menu-title">Hot Offers</a>
                 </li>
 
             </ul>
@@ -164,11 +166,11 @@
         <ul class="mobile-menu-category-list">
 
             <li class="menu-category">
-                <a href="/" class="menu-title">Home</a>
+                <a href="{% url 'home' %}" class="menu-title">Home</a>
             </li>
 
             <li class="menu-category">
-                <a href="blogs/" class="menu-title">Blog</a>
+                <a href="{% url 'blogs' %}" class="menu-title">Blogs</a>
             </li>
 
             {% recursetree categories %}
@@ -190,7 +192,7 @@
             {% endrecursetree %}
 
             <li class="menu-category">
-                <a href="hot-offers/" class="menu-title">Hot Offers</a>
+                <a href="{% url 'hot-offers' %}" class="menu-title">Hot Offers</a>
             </li>
 
         </ul>
