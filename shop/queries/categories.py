@@ -1,14 +1,28 @@
+from django.core.cache import cache
+
 from shop.models import BrandDirectoryCategory, \
     PopularCategory, Category
 
 
 def give_brand_directory_category():
-    return BrandDirectoryCategory.objects.all().prefetch_related('product')
+    query = cache.get('BrandDirectoryCategory')
+    if not query:
+        query = BrandDirectoryCategory.objects.all().prefetch_related('product')
+        cache.set('BrandDirectoryCategory', query, 120)
+    return query
 
 
 def give_popular_category():
-    return PopularCategory.objects.select_related('category')[:5]
+    query = cache.get('PopularCategory')
+    if not query:
+        query = PopularCategory.objects.select_related('category')[:5]
+        cache.set('PopularCategory', query, 120)
+    return query
 
 
 def give_category():
-    return Category.objects.all().prefetch_related('children')
+    query = cache.get('Category')
+    if not query:
+        query = Category.objects.all().prefetch_related('children')
+        cache.set('Category', query, 120)
+    return query

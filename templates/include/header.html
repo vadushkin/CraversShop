@@ -2,46 +2,46 @@
 
 <header>
 
-    <div class="header-top">
+        <div class="header-top">
 
-        <div class="container">
+            <div class="container">
 
-            <ul class="header-social-container">
-                {% for network in networks %}
-                    <li>
-                        <a href="{{ network.url }}" class="social-link" target="_blank">
-                            <img src="{{ network.photo.url }}" alt="{{ network.name }}" width="18" height="18">
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+                <ul class="header-social-container">
+                    {% for network in networks %}
+                        <li>
+                            <a href="{{ network.url }}" class="social-link" target="_blank">
+                                <img src="{{ network.photo.url }}" alt="{{ network.name }}" width="18" height="18">
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
 
-            <div class="header-alert-news">
-                <p>
-                    <b>Free Shipping</b>
-                    This Week Order Over - $55
-                </p>
-            </div>
+                <div class="header-alert-news">
+                    <p>
+                        <b>Free Shipping</b>
+                        This Week Order Over - $55
+                    </p>
+                </div>
 
-            <div class="header-top-actions">
+                <div class="header-top-actions">
 
-                <select name="currency">
+                    <select name="currency">
 
-                    <option value="usd">USD &dollar;</option>
+                        <option value="usd">USD &dollar;</option>
 
-                </select>
+                    </select>
 
-                <select name="language">
+                    <select name="language">
 
-                    <option value="en-US">English</option>
+                        <option value="en-US">English</option>
 
-                </select>
+                    </select>
+
+                </div>
 
             </div>
 
         </div>
-
-    </div>
 
     <div class="header-main">
 
@@ -194,6 +194,7 @@
             </li>
 
         </ul>
+
 
         <div class="menu-bottom">
 

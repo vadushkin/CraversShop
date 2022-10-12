@@ -20,7 +20,6 @@ class ShopHome(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        # todo сделать кеш для большинства запросов
 
         # title
         context['title'] = 'Cravers'
@@ -127,7 +126,7 @@ def cart(request):
     items = data['items']
 
     context = {
-        'items': items,
+        'items': items.select_related('product'),
         'order': order,
         'cartItems': cartItems,
         'title': 'Cart',
@@ -144,7 +143,7 @@ def checkout(request):
     items = data['items']
 
     context = {
-        'items': items,
+        'items': items.select_related('product'),
         'order': order,
         'cartItems': cartItems,
         'title': 'Checkout',
