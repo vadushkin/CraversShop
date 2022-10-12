@@ -8,4 +8,7 @@
     <h2>{{ product.title }}</h2>
     <h5>${{ product.price }}</h5>
     <img src="{{ product.photo.url }}" alt="{{ product.title }}">
+    <button data-product="{{ product.id }}" data-action="add"
+            class="add-cart-btn add-btn update-cart">Add to Cart
+    </button>
 {% endblock content %}

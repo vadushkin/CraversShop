@@ -14,10 +14,10 @@
                     <div style="flex:2">
                         <img class="row-image"
                              src="{{ item.product.photo.url }}"
-                             alt="{{ item.product.name }}"/>
+                             alt="{{ item.product.title }}"/>
                     </div>
                     <div style="flex:2">
-                        <p>{{ item.product.name }}</p>
+                        <p>{{ item.product.title }}</p>
                     </div>
                     <div style="flex:1">
                         <p>${{ item.product.price|floatformat:2 }}</p>

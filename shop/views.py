@@ -28,8 +28,6 @@ class ShopHome(ListView):
         data = cartData(self.request)
 
         cartItems = data['cartItems']
-        order = data['order']
-        items = data['items']
         product = Product.objects.all()
 
         # items

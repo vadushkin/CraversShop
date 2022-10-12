@@ -21,10 +21,10 @@
                     <div style="flex:2">
                         <img class="row-image"
                              src="{{ item.product.photo.url }}"
-                             alt="{{ item.product.name }}"/>
+                             alt="{{ item.product.title }}"/>
                     </div>
                     <div style="flex:2">
-                        <p>{{ item.product.name }}</p>
+                        <p>{{ item.product.title }}</p>
                     </div>
                     <div style="flex:1">
                         <p>${{ item.product.price|floatformat:2 }}</p>
@@ -33,12 +33,12 @@
                         <p class="quantity">{{ item.quantity }}</p>
                         <div class="quantity">
                             <img data-product="{{ item.product.id }}"
-                                 alt="{{ item.product.name }}"
+                                 alt="{{ item.product.title }}"
                                  data-action="add"
                                  class="chg-quantity update-cart"
                                  src="{% static  'images/4655143.png' %}"/>
                             <img data-product="{{ item.product.id }}"
-                                 alt="{{ item.product.name }}"
+                                 alt="{{ item.product.title }}"
                                  data-action="remove"
                                  class="chg-quantity update-cart"
                                  src="{% static  'images/57055.png' %}"/>
