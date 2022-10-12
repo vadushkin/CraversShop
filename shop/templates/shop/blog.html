@@ -5,13 +5,32 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Title: {{ blog.title }}</h1>
-    <h2>Category: {{ blog.category }}</h2>
-    <img src="{{ blog.photo.url }}" alt="{{ blog.title }}">
-    <h4>Text: {{ blog.text }}</h4>
-    <p>By: {{ blog.author }}</p>
+    <div class="blog-container has-scrollbar">
+        <div class="container ">
+            <div class="blog-card">
 
-    <p>Stars: {{ blog.stars }}</p>
-    <p>Likes: {{ blog.likes }}</p>
-    <p>Created at: {{ blog.created_at }}</p>
+                <img src="{{ blog.photo.url }}"
+                     alt="{{ blog.title }}"
+                     width="250"
+                     height="250"
+                     class="blog-banner">
+
+
+                <div class="blog-content">
+
+                    <a href="{{ blog.category.get_absolute_url }}"
+                       class="blog-category">{{ blog.category.title }}</a>
+
+                    <h3 class="blog-title">{{ blog.title }}</h3>
+
+                    <p>{{ blog.text }}</p>
+
+                    <p class="blog-meta">
+                        By <cite>{{ blog.author.username }}</cite> /
+                        <time datetime="{{ blog.created_at }}">{{ blog.created_at }}</time>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}

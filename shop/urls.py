@@ -1,13 +1,13 @@
 from django.urls import path
 
 from shop.views import ShopHome, ProductsByCategoryListView, ProductDetailView, \
-    BlogDetailView, cart, checkout, updateItem
+    BlogDetailView, cart, checkout, updateItem, BlogsView
 
 urlpatterns = [
     path('', ShopHome.as_view(), name='home'),
 
     # static urls
-    path('blogs/', ShopHome.as_view(), name='blogs'),
+    path('blogs/', BlogsView.as_view(), name='blogs'),
     path('hot-offers/', ShopHome.as_view(), name='hot-offers'),
 
     # blogs

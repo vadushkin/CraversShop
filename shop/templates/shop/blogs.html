@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="blog-container has-scrollbar">
+        <div class="container ">
+            {% for blog in blogs %}
+                <div class="blog-card">
+                    <a href="{{ blog.get_absolute_url }}">
+                        <img src="{{ blog.photo.url }}"
+                             alt="{{ blog.title }}"
+                             width="250"
+                             height="250"
+                             class="blog-banner">
+                    </a>
+
+                    <div class="blog-content">
+
+                        <a href="{{ blog.category.get_absolute_url }}"
+                           class="blog-category">{{ blog.category.title }}</a>
+
+                        <a href="{{ blog.get_absolute_url }}">
+                            <h3 class="blog-title">{{ blog.title }}</h3>
+                        </a>
+
+                        <p class="blog-meta">
+                            By <cite>{{ blog.author.username }}</cite> /
+                            <time datetime="{{ blog.created_at }}">{{ blog.created_at }}</time>
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

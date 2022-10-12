@@ -104,6 +104,21 @@ class BlogDetailView(DetailView):
         return queryset
 
 
+class BlogsView(ListView):
+    context_object_name = 'blogs'
+    template_name = 'shop/blogs.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Blogs'
+        give_dict_with_base_queries(context)
+        return context
+
+    def get_queryset(self):
+        queryset = Blog.objects.all().select_related('category').select_related('author')
+        return queryset
+
+
 def cart(request):
     data = cartData(request)
 
@@ -111,7 +126,12 @@ def cart(request):
     order = data['order']
     items = data['items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {
+        'items': items,
+        'order': order,
+        'cartItems': cartItems,
+        'title': 'Cart',
+    }
     give_dict_with_base_queries(context)
     return render(request, 'shop/cart.html', context)
 
@@ -123,7 +143,12 @@ def checkout(request):
     order = data['order']
     items = data['items']
 
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    context = {
+        'items': items,
+        'order': order,
+        'cartItems': cartItems,
+        'title': 'Checkout',
+    }
     give_dict_with_base_queries(context)
     return render(request, 'shop/checkout.html', context)
 
