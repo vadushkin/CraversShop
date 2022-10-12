@@ -1,14 +1,78 @@
 {% extends 'base.html' %}
+{% load shop_tags %}
+
 
 {% block title %}
     {{ title }}
 {% endblock title %}
 
+
 {% block content %}
-    <h2>{{ product.title }}</h2>
-    <h5>${{ product.price }}</h5>
-    <img src="{{ product.photo.url }}" alt="{{ product.title }}">
-    <button data-product="{{ product.id }}" data-action="add"
-            class="add-cart-btn add-btn update-cart">Add to Cart
-    </button>
+    <div class="container">
+        <div class="product-grid">
+
+            <div class="showcase">
+
+                <div class="showcase-banner">
+
+                    <img src="{{ product.photo.url }}" alt="{{ product.title }}"
+                         class="product-img default"
+                         width="300">
+                    {% if product.photo_back %}
+                        <img src="{{ product.photo_back.url }}" alt="{{ product.title }}"
+                             class="product-img hover"
+                             width="300">
+                    {% else %}
+                        <img src="{{ product.photo.url }}" alt="{{ product.title }}"
+                             class="product-img hover"
+                             width="300">
+                    {% endif %}
+
+                    {% if product.sale > 0 %}
+                        <p class="showcase-badge">{{ product.sale }}%</p>
+                    {% else %}
+                        {% if product.is_on_closeout %}
+                            <p class="showcase-badge angle black">Sale</p>
+                        {% endif %}
+                    {% endif %}
+
+                </div>
+
+                <div class="showcase-content">
+                    <a href="{{ product.category.get_absolute_url }}"
+                       class="showcase-category">{{ product.category }}</a>
+
+                    <h3>
+                        <a href="{{ product.get_absolute_url }}"
+                           class="showcase-title">{{ product.title }}</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                        {% for star in product.stars|give_range_stars %}
+                            <ion-icon name="star"></ion-icon>
+                        {% endfor %}
+                        {% for item in product.stars|give_another_stars %}
+                            <ion-icon name="star-outline"></ion-icon>
+                        {% endfor %}
+                    </div>
+
+                    <div class="price-box">
+                        {% if product.sale > 0 %}
+                            <p class="price">
+                                ${{ product.price|sale_price:product.sale }}</p>
+                            <del>${{ product.price }}.00</del>
+                        {% else %}
+                            <p class="price">${{ product.price }}.00</p>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <button data-product="{{ product.id }}" data-action="add"
+                class="add-cart-btn add-btn update-cart">Add to Cart
+        </button>
+    </div>
 {% endblock content %}
