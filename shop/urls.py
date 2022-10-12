@@ -15,11 +15,9 @@ urlpatterns = [
 
     # categories
     path('category/<slug:slug>/', ProductsByCategoryListView.as_view(), name='posts-by-category'),
-    path('categories/<slug:slug>/', ProductsByCategoryListView.as_view(), name='categories'),
 
     # products
     path('product/<slug:slug>/', ProductDetailView.as_view(), name='product'),
-    path('products/<slug:slug>/', ProductDetailView.as_view(), name='products'),
 
     # cart
     path('cart/', cart, name="cart"),
