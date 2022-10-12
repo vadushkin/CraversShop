@@ -1,3 +1,7 @@
+import json
+
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
 from shop.models.blog import Blog
@@ -5,6 +9,8 @@ from shop.models.category import Category
 from shop.models.product import Product
 from shop.queries import products, categories, banners, blogs
 from shop.services import give_dict_with_base_queries
+from .models import Order, OrderItem
+from .utils import cartData
 
 
 class ShopHome(ListView):
@@ -18,6 +24,17 @@ class ShopHome(ListView):
 
         # title
         context['title'] = 'Cravers'
+
+        data = cartData(self.request)
+
+        cartItems = data['cartItems']
+        order = data['order']
+        items = data['items']
+        product = Product.objects.all()
+
+        # items
+        context['cartItems'] = cartItems
+        context['products'] = product
 
         # added base queries
         give_dict_with_base_queries(context)
@@ -87,3 +104,51 @@ class BlogDetailView(DetailView):
     def get_queryset(self):
         queryset = Blog.objects.filter(slug=self.kwargs['slug'])
         return queryset
+
+
+def cart(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    give_dict_with_base_queries(context)
+    return render(request, 'shop/cart.html', context)
+
+
+def checkout(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    give_dict_with_base_queries(context)
+    return render(request, 'shop/checkout.html', context)
+
+
+def updateItem(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    customer = request.user.customer
+    product = Product.objects.get(id=productId)
+    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Item was added', safe=False)

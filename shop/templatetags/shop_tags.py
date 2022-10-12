@@ -5,40 +5,51 @@ register = template.Library()
 
 @register.filter
 def sale_price(price: int, sale: int) -> str:
-    """Возвращает цену со скидкой"""
+    """
+    Give the price at a discount
+    """
+
     try:
         price -= price * sale / 100
-    except:
+    except TypeError:
         pass
     return format(price, '.2f')
 
 
 @register.filter
 def give_another_stars(stars: int) -> range:
-    """Возвращает остающиеся звезды"""
+    """
+    Give away the rest of the stars
+    """
+
     try:
         stars = 5 - int(stars)
-    except:
+    except ValueError:
         pass
     return range(stars)
 
 
 @register.filter
 def give_range_stars(stars: int) -> range:
-    """Возвращает все звезды"""
+    """
+    Give all stars
+    """
+
     try:
         return range(int(stars))
-    except:
+    except TypeError or ValueError:
         pass
 
 
 @register.filter
 def give_percent(quantity: int, sold: int) -> int:
-    """Возвращает процент от числа"""
+    """
+    Give the percent from the number
+    """
+
     try:
         if sold is None:
             return 1 * 100 // quantity
-        else:
-            return sold * 100 // quantity
-    except:
+        return sold * 100 // quantity
+    except ZeroDivisionError:
         pass

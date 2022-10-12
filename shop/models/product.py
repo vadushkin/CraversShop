@@ -46,6 +46,12 @@ class Product(models.Model):
             )],
     )
 
+    digital = models.BooleanField(
+        default=False,
+        null=True,
+        blank=True,
+    )
+
     photo_back = models.FileField(
         upload_to='products/',
         verbose_name='Обратная фотография',
@@ -80,6 +86,7 @@ class Product(models.Model):
     is_on_closeout = models.BooleanField(
         verbose_name="На распродаже?",
     )
+
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name="Дата обновления",

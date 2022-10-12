@@ -2,7 +2,6 @@ from shop.models.banner import Banner
 from shop.models.best_product import BestProduct
 from shop.models.blog import Blog
 from shop.models.category import Category
-from shop.models.comment import Comment
 from shop.models.contact import Contact
 from shop.models.our_service import Service
 from shop.models.product import Product
@@ -14,6 +13,8 @@ from shop.models.testimonial import Testimonial
 from shop.models.lower_banner import LowerBanner
 from shop.models.brand_directory import BrandDirectoryCategory
 from shop.models.logo import Logo
+from shop.models.order import OrderItem, Order
+from shop.models.customer import Customer
 
 __all__ = (
     "Network",
@@ -23,7 +24,6 @@ __all__ = (
     "BestProduct",
     "Service",
     "Blog",
-    "Comment",
     "Banner",
     "Contact",
     "OurCompany",
@@ -32,4 +32,7 @@ __all__ = (
     "LowerBanner",
     "BrandDirectoryCategory",
     "Logo",
+    "Customer",
+    "OrderItem",
+    "Order",
 )

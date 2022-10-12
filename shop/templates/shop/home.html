@@ -399,29 +399,31 @@
                                                 {% else %}
                                                     <p class="price">${{ product_of_the_day.product.price }}.00</p>
                                                 {% endif %}
-                                        </div>
-
-                                        <button class="add-cart-btn">Add to Cart</button>
-
-                                        <div class="showcase-status">
-                                            <div class="wrapper">
-                                                <p>
-                                                    {% if product_of_the_day.sold %}
-                                                        already sold: <b>{{ product_of_the_day.sold }}</b>
-                                                    {% else %}
-                                                        already sold: <b>0</b>
-                                                    {% endif %}
-                                                </p>
-
-                                                <p>
-                                                    available: <b>{{ product_of_the_day.quantity }}</b>
-                                                </p>
                                             </div>
-                                            <div class="showcase-status-bar">
-                                                <style>
-                                                    .product-featured .showcase-status-bar::before {
-                                                        width: {{ product_of_the_day.quantity|give_percent:product_of_the_day.sold }}%;
-                                                    }
+
+                                            <button data-product="{{ product_of_the_day.id }}" data-action="add"
+                                                    class="add-cart-btn add-btn update-cart">Add to Cart
+                                            </button>
+
+                                            <div class="showcase-status">
+                                                <div class="wrapper">
+                                                    <p>
+                                                        {% if product_of_the_day.sold %}
+                                                            already sold: <b>{{ product_of_the_day.sold }}</b>
+                                                        {% else %}
+                                                            already sold: <b>0</b>
+                                                        {% endif %}
+                                                    </p>
+
+                                                    <p>
+                                                        available: <b>{{ product_of_the_day.quantity }}</b>
+                                                    </p>
+                                                </div>
+                                                <div class="showcase-status-bar">
+                                                    <style>
+                                                        .product-featured .showcase-status-bar::before {
+                                                            width: {{ product_of_the_day.quantity|give_percent:product_of_the_day.sold }}%;
+                                                        }
                                                 </style>
                                             </div>
                                         </div>
@@ -469,7 +471,7 @@
                                             <p class="showcase-badge">{{ product.sale }}%</p>
                                         {% else %}
                                             {% if product.is_on_closeout %}
-                                                <p class="showcase-badge angle black">sale</p>
+                                                <p class="showcase-badge angle black">Sale</p>
                                             {% endif %}
                                         {% endif %}
 
@@ -689,4 +691,3 @@
     </main>
     <div class="overlay" data-overlay></div>
 {% endblock content %}
-

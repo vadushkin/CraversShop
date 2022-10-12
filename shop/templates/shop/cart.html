@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="box-element">
+            <a href="{% url 'home' %}">&#x2190; Continue shopping</a>
+            <br>
+            <a href="{% url 'checkout' %}">&rarr; Checkout</a>
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+            {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex:2">
+                        <img class="row-image"
+                             src="{{ item.product.url }}"
+                             alt="{{ item.product.name }}"/>
+                    </div>
+                    <div style="flex:2">
+                        <p>{{ item.product.name }}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p>${{ item.product.price|floatformat:2 }}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p class="quantity">{{ item.quantity }}</p>
+                        <div class="quantity">
+                            <img data-product="{{ item.product.id }}"
+                                 alt="{{ item.product.name }}"
+                                 data-action="add"
+                                 class="chg-quantity update-cart"
+                                 src="{% static  'images/4655143.png' %}"/>
+                            <img data-product="{{ item.product.id }}"
+                                 alt="{{ item.product.name }}"
+                                 data-action="remove"
+                                 class="chg-quantity update-cart"
+                                 src="{% static  'images/57055.png' %}"/>
+                        </div>
+                    </div>
+                    <div style="flex:1">
+                        <p>${{ item.get_total|floatformat:2 }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <h4>Items: {{ order.get_cart_items }}</h4>
+            <h4>Total: ${{ order.get_cart_total|floatformat:2 }}</h4>
+        </div>
+    </div>
+{% endblock content %}

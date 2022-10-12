@@ -6,7 +6,6 @@ from .category import Category
 
 
 class Blog(models.Model):
-    # todo Набросок блога
     title = models.CharField(
         max_length=200,
         verbose_name="Название",

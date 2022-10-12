@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="box-element">
+            <a href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+            <h2>Order Summary</h2>
+            <hr>
+            {% for item in items %}
+                <div class="cart-row">
+                    <div style="flex:2">
+                        <img class="row-image"
+                             src="{{ item.product.url }}"
+                             alt="{{ item.product.name }}"/>
+                    </div>
+                    <div style="flex:2">
+                        <p>{{ item.product.name }}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p>${{ item.product.price|floatformat:2 }}</p>
+                    </div>
+                    <div style="flex:1">
+                        <p>x{{ item.quantity }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <hr>
+            <h5>Items: {{ order.get_cart_items }}</h5>
+            <h5>Total: ${{ order.get_cart_total|floatformat:2 }}</h5>
+        </div>
+    </div>
+{% endblock content %}

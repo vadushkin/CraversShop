@@ -63,19 +63,19 @@
 
             <div class="header-user-actions">
 
-                <button class="action-btn">
+                <a href="#" class="action-btn">
                     <ion-icon name="person-outline"></ion-icon>
-                </button>
+                </a>
 
-                <button class="action-btn">
+                <a href="#" class="action-btn">
                     <ion-icon name="heart-outline"></ion-icon>
                     <span class="count">0</span>
-                </button>
+                </a>
 
-                <button class="action-btn">
+                <a href="{% url 'cart' %}" class="action-btn">
                     <ion-icon name="bag-handle-outline"></ion-icon>
-                    <span class="count">0</span>
-                </button>
+                    <span class="count">{{ cartItems }}</span>
+                </a>
 
             </div>
 
