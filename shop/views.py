@@ -126,7 +126,7 @@ def cart(request):
     items = data['items']
 
     context = {
-        'items': items.select_related('product'),
+        'items': items,
         'order': order,
         'cartItems': cartItems,
         'title': 'Cart',
@@ -143,7 +143,7 @@ def checkout(request):
     items = data['items']
 
     context = {
-        'items': items.select_related('product'),
+        'items': items,
         'order': order,
         'cartItems': cartItems,
         'title': 'Checkout',
