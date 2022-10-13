@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/cravers
+    ports:
+      - "8000:8000"

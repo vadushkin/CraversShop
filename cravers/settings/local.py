@@ -2,7 +2,10 @@ from decouple import config
 
 from cravers.settings.settings import *
 
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
+
+# added for your convenience
+SECRET_KEY = 'django-insecure-p4hldk)!^n4(rrrzlz_^-c%!g$v9$a8e)7kobrlz6!qvtk#7gb'
 
 DEBUG = True
 
