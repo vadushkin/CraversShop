@@ -1,7 +1,7 @@
 from shop.queries import categories, services_for_site
 
 
-def give_dict_with_base_queries(context: dict) -> dict | None:
+def give_dict_with_base_queries(context: dict):
     """
     Context is a list from a view.
     Returns a dictionary with base queries.
