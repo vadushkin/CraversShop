@@ -6,7 +6,7 @@
 
 {% block content %}
     {% for product in products %}
-        <h2>{{ product.title }}</h2>
+        <h2><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
         <h5>${{ product.price }}</h5>
         <img src="{{ product.photo.url }}" alt="{{ product.title }}">
     {% endfor %}
