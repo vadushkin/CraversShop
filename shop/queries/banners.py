@@ -14,6 +14,6 @@ def give_banners():
 def give_lower_banner():
     query = cache.get('LowerBanner')
     if not query:
-        query = LowerBanner.objects.last()
+        query = LowerBanner.objects.select_related('category').last()
         cache.set('LowerBanner', query, 300)
     return query

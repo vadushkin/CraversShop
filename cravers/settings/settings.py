@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
 
     # additional
+    'rest_framework',
     'phone_field',
     'mptt',
     'django_mptt_admin',
@@ -82,4 +83,12 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.join(BASE_DIR, 'cravers_cache'),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny'
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5,
 }

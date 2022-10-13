@@ -1,9 +1,30 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from shop.views import ShopHome, ProductsByCategoryListView, ProductDetailView, \
     BlogDetailView, cart, checkout, updateItem, BlogsView
+from .api import *
+
+router = routers.SimpleRouter()
+
+# products
+router.register(r'products', ProductViewSet)
+router.register(r'best_products', BestProductViewSet)
+router.register(r'products_of_the_day', ProductOfTheDayViewSet)
+
+# blogs
+router.register(r'blogs', BlogViewSet)
+
+# categories
+router.register(r'categories', CategoryViewSet)
+router.register(r'popular_categories', PopularCategoryViewSet)
+
+# customer
+router.register(r'customers', CustomerViewSet)
+
 
 urlpatterns = [
+    # home
     path('', ShopHome.as_view(), name='home'),
 
     # static urls
@@ -23,4 +44,8 @@ urlpatterns = [
     path('cart/', cart, name="cart"),
     path('checkout/', checkout, name="checkout"),
     path('update_item/', updateItem, name="update_item"),
+
+    # api
+    path('api/v1/', include(router.urls)),
+    path('api/v1/drf-auth/', include('rest_framework.urls'))
 ]
