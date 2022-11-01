@@ -1,10 +1,14 @@
-FROM python:3.10
+FROM python:3.11
+MAINTAINER Vadushka <vadimshalapugin@gmail.com>
 
-WORKDIR /cravers
+RUN apt-get update && apt-get upgrade -y && apt-get autoremove && apt-get autoclean
 
-COPY ./requirements.txt .
+RUN mkdir /site
+COPY . /site/
+WORKDIR /site
 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-COPY . .
+ENTRYPOINT ["python", "manage.py"]
+CMD ["runserver", "0.0.0.0:8000"]

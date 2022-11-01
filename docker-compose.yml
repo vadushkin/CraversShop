@@ -1,10 +1,15 @@
-version: '3.9'
+version: "3"
 
 services:
   web:
+    container_name: cravers_web_app
     build: .
-    command: bash -c "python manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - .:/cravers
+    restart: on-failure
     ports:
       - "8000:8000"
+    volumes:
+      - ./cravers:/site/cravers
+
+  ubuntu:
+    container_name: cravers_ubuntu_container
+    image: ubuntu
